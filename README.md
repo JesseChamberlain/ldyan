@@ -1,4 +1,5 @@
 ![Build Status](https://codeship.com/projects/fc7d8080-530d-0135-099b-129b825f4ead/status?branch=master)
+[![CodeClimate](https://codeclimate.com/github/jessechamberlain/ldyan.png/badges/gpa.svg)](https://codeclimate.com/github/jessechamberlain/ldyan)
 ![Code Climate](https://codeclimate.com/github/jessechamberlain/ldyan.png)
 ![Coverage Status](https://coveralls.io/repos/jessechamberlain/ldyan/badge.png)
 
