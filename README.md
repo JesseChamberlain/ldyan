@@ -1,3 +1,7 @@
+![Build Status](https://codeship.com/projects/fc7d8080-530d-0135-099b-129b825f4ead/status?branch=master)
+![Code Climate](https://codeclimate.com/github/jessechamberlain/ldyan.png)
+![Coverage Status](https://coveralls.io/repos/jessechamberlain/ldyan/badge.png)
+
 # README
 
 This repository has all the code necessary for starting a React on Rails application
