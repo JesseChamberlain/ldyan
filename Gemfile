@@ -17,9 +17,6 @@ end
 
 group :test do
   gem 'launchy', require: false
-end
-
-group :test do
   gem 'coveralls', require: false
 end
 
