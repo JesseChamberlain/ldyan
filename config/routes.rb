@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  root 'static_pages#index'
+  root 'songs#index'
+  resources :songs, only: [:index]
 end
