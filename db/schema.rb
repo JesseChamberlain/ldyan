@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170729182720) do
+ActiveRecord::Schema.define(version: 20170729211212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "blocks", force: :cascade do |t|
+    t.string   "name",                 null: false
+    t.integer  "repetitions",          null: false
+    t.integer  "measures",             null: false
+    t.integer  "time_signature_over"
+    t.integer  "time_signature_under"
+    t.string   "musical_key"
+    t.integer  "song_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["song_id"], name: "index_blocks_on_song_id", using: :btree
+  end
 
   create_table "songs", force: :cascade do |t|
     t.string   "name",        null: false
