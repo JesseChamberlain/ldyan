@@ -4,6 +4,9 @@ RSpec.describe Block, type: :model do
   it { should have_valid(:name).when("A1") }
   it { should_not have_valid(:name).when(nil, "")}
 
+  it { should have_valid(:color).when("green", "pink") }
+  it { should_not have_valid(:color).when(nil, "")}
+
   it { should have_valid(:repetitions).when(1, 50) }
   it { should_not have_valid(:repetitions).when(5.6) }
   it { should_not have_valid(:repetitions).when(nil) }

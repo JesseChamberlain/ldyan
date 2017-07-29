@@ -1,5 +1,6 @@
 class Block < ApplicationRecord
   validates :name, presence: true
+  validates :color, presence: true
   validates_numericality_of :repetitions,
     presence: true,
     only_integer: true,
