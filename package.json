@@ -1,7 +1,7 @@
 {
-  "name": "bare-rails-react",
+  "name": "Ldyan",
   "version": "1.0.0",
-  "description": "Bare Rails and React app",
+  "description": "Music structure Whiteboard",
   "main": "webpack.config.js",
   "engines": {
     "node": "7.9.0"
@@ -12,7 +12,7 @@
     "start": "yarn run webpack -- --watch",
     "webpack": "node_modules/.bin/webpack --config ./react/webpack.config.js"
   },
-  "author": "Ivan Lasorsa",
+  "author": "Jesse Chamberlain",
   "license": "MIT",
   "dependencies": {
     "babel-core": "^6.5.1",
@@ -20,6 +20,7 @@
     "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-react": "^6.5.0",
+    "rails-ujs": "^5.1.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "webpack": "^2.7.0"
