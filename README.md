@@ -1,6 +1,6 @@
 ![Build Status](https://codeship.com/projects/fc7d8080-530d-0135-099b-129b825f4ead/status?branch=master)
 ![Code Climate](https://codeclimate.com/github/JesseChamberlain/ldyan.png)
-[![Coverage Status](https://coveralls.io/repos/github/JesseChamberlain/ldyan/badge.svg?branch=master)](https://coveralls.io/github/JesseChamberlain/ldyan?branch=master)
+![Coverage Status](https://coveralls.io/repos/github/JesseChamberlain/ldyan/badge.svg?branch=master)
 
 # README
 This repository contains the source code for the song mapping application Ldyan (lid-ee-uh n).
