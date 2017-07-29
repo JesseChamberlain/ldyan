@@ -10,6 +10,7 @@ gem 'listen'
 group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'launchy', require: false
   gem 'rspec-rails', '~> 3.0'
   gem 'pry-rails'
   gem 'shoulda'
@@ -17,7 +18,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'launchy', require: false
   gem 'coveralls', require: false
 end
 
