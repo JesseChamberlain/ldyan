@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SongsController, type: :controller do
+RSpec.describe HomeController, type: :controller do
   describe "GET index" do
     it "has a 200 status code" do
       get :index
