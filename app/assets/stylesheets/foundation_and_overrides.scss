@@ -126,11 +126,12 @@ $black       : #000000;
 
 $custom-cream : #EDF5E1;
 $custom-blue  : #05386B;
-$custom-bg    : #5CDB95;
+$custom-bg    : #28302E;
+$custom-font  : #667A75;
 
 // We use these to control various global styles
-$body-bg: $charcoal;
-$body-font-color: $snow;
+$body-bg: $custom-bg;
+$body-font-color: $custom-font;
 $body-font-family: $font-family-sans-serif;
 $body-font-weight: $font-weight-normal;
 $body-font-style: normal;

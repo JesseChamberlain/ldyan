@@ -4,12 +4,16 @@ const SongTile = (props) => {
   let song = props.song
   return (
     <div className="song-tile">
-      <Link to={`/songs/${song.id}`}>
+      <a href={`/songs/${song.id}`}>
         <p>{song.name}</p>
-      </Link>
+      </a>
       <hr/>
     </div>
   );
 }
 
 export default SongTile;
+
+/* <Link to={`/songs/${song.id}`}>
+  <p>{song.name}</p>
+</Link> */
