@@ -55,7 +55,7 @@ BLOCKS = [
     song_id: Song.find_by(name: "Seraphina").id
   },
   {
-    name: "A",
+    name: "A1",
     color: "yellow",
     repetitions: "4",
     measures: "8",
@@ -65,7 +65,7 @@ BLOCKS = [
     song_id: Song.find_by(name: "Seraphina").id
   },
   {
-    name: "A",
+    name: "A2",
     color: "yellow",
     repetitions: "2",
     measures: "8",
@@ -75,7 +75,7 @@ BLOCKS = [
     song_id: Song.find_by(name: "Seraphina").id
   },
   {
-    name: "A",
+    name: "A3",
     color: "yellow",
     repetitions: "1",
     measures: "8",
@@ -85,7 +85,7 @@ BLOCKS = [
     song_id: Song.find_by(name: "Seraphina").id
   },
   {
-    name: "B",
+    name: "B1",
     color: "pink",
     repetitions: "2",
     measures: "8",
@@ -95,7 +95,7 @@ BLOCKS = [
     song_id: Song.find_by(name: "Seraphina").id
   },
   {
-    name: "B",
+    name: "B2",
     color: "pink",
     repetitions: "5",
     measures: "8",
@@ -125,7 +125,7 @@ BLOCKS = [
     song_id: Song.find_by(name: "Seraphina").id
   },
   {
-    name: "A",
+    name: "A4",
     color: "yellow",
     repetitions: "3",
     measures: "8",
