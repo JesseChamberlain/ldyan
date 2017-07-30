@@ -55,8 +55,8 @@ BLOCKS = [
     song_id: Song.find_by(name: "Seraphina").id
   },
   {
-    name: "A",
-    color: "yellow",
+    name: "A1",
+    color: "red",
     repetitions: "4",
     measures: "8",
     time_signature_over: "6",
@@ -65,8 +65,8 @@ BLOCKS = [
     song_id: Song.find_by(name: "Seraphina").id
   },
   {
-    name: "A",
-    color: "yellow",
+    name: "A2",
+    color: "red",
     repetitions: "2",
     measures: "8",
     time_signature_over: "6",
@@ -75,8 +75,8 @@ BLOCKS = [
     song_id: Song.find_by(name: "Seraphina").id
   },
   {
-    name: "A",
-    color: "yellow",
+    name: "A3",
+    color: "red",
     repetitions: "1",
     measures: "8",
     time_signature_over: "6",
@@ -85,7 +85,7 @@ BLOCKS = [
     song_id: Song.find_by(name: "Seraphina").id
   },
   {
-    name: "B",
+    name: "B1",
     color: "pink",
     repetitions: "2",
     measures: "8",
@@ -95,7 +95,7 @@ BLOCKS = [
     song_id: Song.find_by(name: "Seraphina").id
   },
   {
-    name: "B",
+    name: "B2",
     color: "pink",
     repetitions: "5",
     measures: "8",
@@ -116,7 +116,7 @@ BLOCKS = [
   },
   {
     name: "C",
-    color: "blue",
+    color: "green",
     repetitions: "2",
     measures: "8",
     time_signature_over: "6",
@@ -125,8 +125,8 @@ BLOCKS = [
     song_id: Song.find_by(name: "Seraphina").id
   },
   {
-    name: "A",
-    color: "yellow",
+    name: "A4",
+    color: "red",
     repetitions: "3",
     measures: "8",
     time_signature_over: "6",
