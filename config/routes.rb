@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  root 'songs#index'
-  resources :songs, only: [:index, :show]
+  root 'home#index'
 
   namespace :api do
     namespace :v1 do
-      resources :songs do
-        resources :blocks
+      resources :songs, only: [:index, :show]do
+        resources :blocks, only: [:index]
       end
     end
   end
