@@ -46,6 +46,7 @@ end
 BLOCKS = [
   {
     name: "I",
+    color: "green",
     repetitions: "4",
     measures: "8",
     time_signature_over: "6",
@@ -55,6 +56,7 @@ BLOCKS = [
   },
   {
     name: "A",
+    color: "yellow",
     repetitions: "4",
     measures: "8",
     time_signature_over: "6",
@@ -64,6 +66,7 @@ BLOCKS = [
   },
   {
     name: "A",
+    color: "yellow",
     repetitions: "2",
     measures: "8",
     time_signature_over: "6",
@@ -73,6 +76,7 @@ BLOCKS = [
   },
   {
     name: "A",
+    color: "yellow",
     repetitions: "1",
     measures: "8",
     time_signature_over: "6",
@@ -82,6 +86,7 @@ BLOCKS = [
   },
   {
     name: "B",
+    color: "pink",
     repetitions: "2",
     measures: "8",
     time_signature_over: "6",
@@ -91,6 +96,7 @@ BLOCKS = [
   },
   {
     name: "B",
+    color: "pink",
     repetitions: "5",
     measures: "8",
     time_signature_over: "6",
@@ -100,6 +106,7 @@ BLOCKS = [
   },
   {
     name: "BB",
+    color: "pink",
     repetitions: "1",
     measures: "8",
     time_signature_over: "6",
@@ -108,7 +115,8 @@ BLOCKS = [
     song_id: Song.find_by(name: "Seraphina").id
   },
   {
-    name: "A",
+    name: "C",
+    color: "blue",
     repetitions: "2",
     measures: "8",
     time_signature_over: "6",
@@ -117,7 +125,8 @@ BLOCKS = [
     song_id: Song.find_by(name: "Seraphina").id
   },
   {
-    name: "C",
+    name: "A",
+    color: "yellow",
     repetitions: "3",
     measures: "8",
     time_signature_over: "6",
@@ -128,7 +137,16 @@ BLOCKS = [
 ].freeze
 
 BLOCKS.each do |b|
-  block = Block.find_or_initialize_by(song_id: Song.find_by(id: b[:song_id]).id)
+  block = Block.new(
+    name: b[:name],
+    color: b[:color],
+    repetitions: b[:repetitions],
+    measures: b[:measures],
+    time_signature_over: b[:time_signature_over],
+    time_signature_under: b[:time_signature_under],
+    musical_key: b[:musical_key],
+    song_id: b[:song_id]
+  )
   block.assign_attributes(b)
   block.save!
 end
