@@ -56,7 +56,7 @@ BLOCKS = [
   },
   {
     name: "A1",
-    color: "yellow",
+    color: "red",
     repetitions: "4",
     measures: "8",
     time_signature_over: "6",
@@ -66,7 +66,7 @@ BLOCKS = [
   },
   {
     name: "A2",
-    color: "yellow",
+    color: "red",
     repetitions: "2",
     measures: "8",
     time_signature_over: "6",
@@ -76,7 +76,7 @@ BLOCKS = [
   },
   {
     name: "A3",
-    color: "yellow",
+    color: "red",
     repetitions: "1",
     measures: "8",
     time_signature_over: "6",
@@ -116,7 +116,7 @@ BLOCKS = [
   },
   {
     name: "C",
-    color: "blue",
+    color: "green",
     repetitions: "2",
     measures: "8",
     time_signature_over: "6",
@@ -126,7 +126,7 @@ BLOCKS = [
   },
   {
     name: "A4",
-    color: "yellow",
+    color: "red",
     repetitions: "3",
     measures: "8",
     time_signature_over: "6",
