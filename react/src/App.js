@@ -4,10 +4,10 @@ import { Route, IndexRoute, Router, browserHistory } from 'react-router';
 
 const App = (props) => {
   return (
-    <div class="row">
-      <p>react/src/app.js</p>
-      <div class="small-6 columns">left</div>
-      <div class="small-6 columns">right</div>
+    <div className="row">
+      <div className="medium-4 large-6 columns">react/src/app.js</div>
+      <div className="medium-4 large-3 columns">react/src/app.js</div>
+      <div className="medium-4 large-3 columns">react/src/app.js</div>
     </div>
     // // react-simple-blog
     // <Router history={browserHistory}>
