@@ -13,14 +13,7 @@
  *= require_tree .
  *= require_self
  *= require foundation_and_overrides
+ *= require blocks
+ *= require songs
 
  */
-
-img {
-  height: 150px;
-  width: 150px;
-}
-
-a {
-  margin: 8px;
-}
