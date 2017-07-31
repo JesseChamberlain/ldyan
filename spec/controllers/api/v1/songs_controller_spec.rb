@@ -34,7 +34,7 @@ RSpec.describe Api::V1::SongsController, type: :controller do
 
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
-      expect(returned_json.length).to eq 1
+      expect(returned_json.length).to eq 2
 
       expect(song["id"]).to eq first_song.id
       expect(song["name"]).to eq first_song.name
