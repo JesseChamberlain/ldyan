@@ -1,4 +1,5 @@
 import SongTile from '../../src/components/SongTile';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 
 describe('SongTile', () => {
   let wrapper;
@@ -6,19 +7,19 @@ describe('SongTile', () => {
 
   beforeEach(() => {
     wrapper = mount(
-      <SongTile
-        song= {song}
-      />
+      <BrowserRouter>
+        <SongTile song= {song}/>
+      </BrowserRouter>
     )
   });
 
   it('should render an SongTile component that has a paragraph tag with the title text', () => {
-    expect(wrapper.find("p")).toBePresent()
-    expect(wrapper.find("p").text()).toMatch("Be a RockStar")
+    expect(wrapper.find("span")).toBePresent()
+    expect(wrapper.find("span").text()).toMatch("Be a RockStar")
   })
 
   it('should not find the description displayed', () => {
-    expect(wrapper.find("p").text()).not.toEqual("A song about egos")
+    expect(wrapper.find("span").text()).not.toEqual("A song about egos")
   })
 
   it('should display the song-tile classname', () => {
@@ -26,7 +27,7 @@ describe('SongTile', () => {
   })
 
   it('should render a Link to the song page', () => {
-    expect(wrapper.find("a")).toBePresent()
+    expect(wrapper.find(Link)).toBePresent()
   })
 
 })

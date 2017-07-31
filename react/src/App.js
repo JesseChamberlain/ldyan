@@ -1,11 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, IndexRoute, Route, browserHistory, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import SongsIndexContainer from './containers/SongsIndexContainer';
 import SongShowContainer from './containers/SongShowContainer';
 
-const App = (props) => {
+const App = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <div>
         <Switch>
           <Route exact path='/' component={SongsIndexContainer} />
@@ -13,7 +13,7 @@ const App = (props) => {
           <Route exact path='/songs/:id' component={SongShowContainer} />
         </Switch>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 
