@@ -12,10 +12,6 @@ describe('SongTile', () => {
     )
   });
 
-  it('renders a paragraph tag with the song title', () => {
-    expect(true).toEqual(true)
-  })
-
   it('should render an SongTile component that has a paragraph tag with the title text', () => {
     expect(wrapper.find("p")).toBePresent()
     expect(wrapper.find("p").text()).toMatch("Be a RockStar")
