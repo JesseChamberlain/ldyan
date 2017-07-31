@@ -1,24 +1,19 @@
 import React from 'react';
-// import NavBar from './components/NavBar'
-import { Route, IndexRoute, Router, browserHistory } from 'react-router';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import SongsIndexContainer from './containers/SongsIndexContainer';
+import SongShowContainer from './containers/SongShowContainer';
 
-const App = (props) => {
+const App = () => {
   return (
-    <div className="row">
-      <div className="medium-4 large-6 columns">react/src/app.js</div>
-      <div className="medium-4 large-3 columns">react/src/app.js</div>
-      <div className="medium-4 large-3 columns">react/src/app.js</div>
-      <SongsIndexContainer />
-    </div>
-    // // react-simple-blog
-    // <Router history={browserHistory}>
-    //   <Route path='/' component={NavBar} >
-    //     <IndexRoute component={ArticlesIndexContainer} />
-    //     <Route path="/articles" component={ArticlesIndexContainer}/>
-    //     <Route path="/articles/:id" component={ArticleShowContainer}/>
-    //   </Route>
-    // </Router>
+    <BrowserRouter>
+      <div>
+        <Switch>
+          <Route exact path='/' component={SongsIndexContainer} />
+          <Route exact path='/songs' component={SongsIndexContainer} />
+          <Route exact path='/songs/:id' component={SongShowContainer} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 

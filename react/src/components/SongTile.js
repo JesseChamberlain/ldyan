@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SongTile = (props) => {
   let song = props.song
   return (
     <div className="song-tile">
-      <a href={`/songs/${song.id}`}>
-        <p>{song.name}</p>
-      </a>
+      <Link to={`/songs/${song.id}`}>
+        <span>{song.name}</span>
+      </Link>
       <hr/>
     </div>
   );
@@ -14,6 +15,6 @@ const SongTile = (props) => {
 
 export default SongTile;
 
-/* <Link to={`/songs/${song.id}`}>
+/* <a href={`/songs/${song.id}`}>
   <p>{song.name}</p>
-</Link> */
+</a> */

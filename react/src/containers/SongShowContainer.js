@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import SongTile from '../components/SongTile';
+import BlockTile from '../components/BlockTile';
 
-class SongsIndexContainer extends Component {
+class SongShowContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      songs: []
+      song: {},
+      blocks: []
     }
   }
 
   componentDidMount() {
-    fetch('/api/v1/songs')
+    let songId = this.props.match.params.id;
+    fetch(`/api/v1/songs/${songId}`)
     .then(response => {
       if (response.ok) {
         return response;
@@ -19,35 +21,37 @@ class SongsIndexContainer extends Component {
         error = new Error(errorMessage);
       }
     })
-    .then(response => response.json())
-    .then(body => {
-      let allSongs = body
-      this.setState({ songs : allSongs["songs"] })
+    .then((response) => response.json())
+    .then((responseData) => {
+      this.setState({
+        song: responseData["song"],
+        blocks: responseData["blocks"]
+      })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
   render() {
-    console.log(this.state.songs)
-    let songs = this.state.songs.map(song => {
+    console.log(this.state.song)
+    console.log(this.state.blocks)
+
+    let blocks = this.state.blocks.map(block => {
       return(
-        <SongTile
-          key={song.id}
-          song={song}
+        <BlockTile
+          key={block.id}
+          block={block}
         />
       )
     })
-    
+
     return(
       <div className="row">
         <div className="small-8 small-centered columns">
-          <h1>Songs</h1>
-          <hr/>
-          {songs}
+          {blocks}
         </div>
       </div>
     )
   }
 }
 
-export default SongsIndexContainer;
+export default SongShowContainer;

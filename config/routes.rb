@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root 'home#index'
+  get '/songs', to: 'home#index'
+  get '/songs/:id', to: 'home#index'
+
 
   namespace :api do
     namespace :v1 do
