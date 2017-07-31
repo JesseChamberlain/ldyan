@@ -6,7 +6,7 @@ const SongTile = (props) => {
   return (
     <div className="song-tile">
       <Link to={`/songs/${song.id}`}>
-        <span>{song.name}</span>
+        <span className="text-link">{song.name}</span>
       </Link>
       <hr/>
     </div>

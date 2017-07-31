@@ -8,7 +8,13 @@
   </head>
 
   <body>
-    <p>app/views/layouts/application.html.erb</p>
+    <div class="top-bar">
+      <ul class="menu">
+        <div class="left">
+          <li class="button text-link"><%= link_to 'Home', root_path %></li>
+        </div>
+      </ul>
+    </div>
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>

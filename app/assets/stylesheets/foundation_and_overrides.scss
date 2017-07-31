@@ -125,12 +125,13 @@ $jet         : #222222;
 $black       : #000000;
 
 $custom-cream : #EDF5E1;
-$custom-blue  : #05386B;
+$custom-button : #4F5B58;
+$custom-blue  : #00CB9D;
 $custom-bg    : #28302E;
-$custom-font  : #667A75;
+$custom-font  : #909B98;
 
 // We use these to control various global styles
-$body-bg: $custom-bg;
+$body-bg: $oil;
 $body-font-color: $custom-font;
 $body-font-family: $font-family-sans-serif;
 $body-font-weight: $font-weight-normal;
@@ -453,7 +454,7 @@ $h6-font-size: 1rem;
 // We use these to control button border and hover styles.
 // $button-border-width: 0px;
 // $button-border-style: solid;
-$button-bg-color: $custom-cream;
+$button-bg-color: $custom-button;
 // $button-bg-hover: scale-color($button-bg-color, $lightness: $button-function-factor);
 // $button-border-color: $button-bg-hover;
 // $secondary-button-bg-hover: scale-color($secondary-color, $lightness: $button-function-factor);
@@ -1371,7 +1372,7 @@ $topbar-bg-color: $custom-blue;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
-$topbar-height: 60px;
+$topbar-height: 50px;
 // $topbar-margin-bottom: 0;
 
 // Controlling the styles for the title in the top bar
