@@ -8,7 +8,6 @@ const SongTile = (props) => {
       <Link to={`/songs/${song.id}`}>
         <span className="text-link">{song.name}</span>
       </Link>
-      <hr/>
     </div>
   );
 }
