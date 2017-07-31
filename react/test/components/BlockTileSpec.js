@@ -24,18 +24,18 @@ describe('BlockTile', () => {
   });
 
   it('should render a p tag with an id of name', () => {
-    expect(wrapper.find("p#name")).toBePresent()
-    expect(wrapper.find("p#name").text()).toMatch("A1 x4")
+    expect(wrapper.find("p#block-name")).toBePresent()
+    expect(wrapper.find("p#block-name").text()).toMatch("A1 x4")
   })
 
   it('should render a p tag with an id of measure', () => {
-    expect(wrapper.find("p#measure")).toBePresent()
-    expect(wrapper.find("p#measure").text()).toMatch("Measures: 8, 6/8")
+    expect(wrapper.find("p#block-measure")).toBePresent()
+    expect(wrapper.find("p#block-measure").text()).toMatch("Measures: 8, 6/8")
   })
 
   it('should render a p tag with an id of scale', () => {
-    expect(wrapper.find("p#scale")).toBePresent()
-    expect(wrapper.find("p#scale").text()).toMatch("Key: C Arabic")
+    expect(wrapper.find("p#block-scale")).toBePresent()
+    expect(wrapper.find("p#block-scale").text()).toMatch("Key: C Arabic")
   })
 
   it('should display the block-tile classname', () => {

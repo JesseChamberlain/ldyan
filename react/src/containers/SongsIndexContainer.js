@@ -37,11 +37,11 @@ class SongsIndexContainer extends Component {
         />
       )
     })
-    
+
     return(
       <div className="row">
         <div className="small-8 small-centered columns">
-          <h1>Songs</h1>
+          <h1 className="title">Songs</h1>
           <hr/>
           {songs}
         </div>
