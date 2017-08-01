@@ -8,8 +8,8 @@ class Api::V1::SongsController < ApplicationController
   def show
     song = Song.find(params[:id])
     blocks = song.blocks
-    blocks.sort_by { |b| b["location"] }
-    render json: {song: song, blocks: blocks}
+    sorted_blocks = blocks.sort_by{|b| b["location"]}
+    render json: {song: song, blocks: sorted_blocks}
   end
 
   def update
@@ -17,14 +17,11 @@ class Api::V1::SongsController < ApplicationController
     blocks = Song.find(params[:id]).blocks
     blocks.each do |block|
       data["blocks"].each_with_index do |d, i|
-        new_location = (i + 1)
-        if d["id"] == block["id"]
-          binding.pry
-          # Logic to post to Database
+        if d["id"] == block.id
+          new_location = (i + 1)
           unless new_location == block.location
-            binding.pry
             block.location = new_location
-            # block.save
+            block.save
           end
         end
       end
