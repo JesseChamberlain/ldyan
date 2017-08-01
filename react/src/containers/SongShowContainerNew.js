@@ -1,42 +1,159 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import BlockTile from '../components/BlockTile';
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
-const SortableItem = SortableElement(({value}) => <li>{value}</li>);
-
-const SortableList = SortableContainer(({items}) => {
+const SortableList = SortableContainer(({blocks}) => {
   return (
     <ul>
-      {items.map((value, index) => (
-        <SortableItem key={`item-${index}`} index={index} value={value} />
+      {blocks.map((value, index) => (
+        <BlockTile key={`item-${index}`} index={index} block={value} />
       ))}
     </ul>
   );
 });
 
-class SongShowContainerNew extends Component {
+class SongShowContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6']
+      song: {},
+      blocks: [
+        {
+          name: "I",
+          color: "green",
+          repetitions: 4,
+          measures: 8,
+          time_signature_over: 8,
+          time_signature_under: 8,
+          musical_key: "C Arabic",
+          song_id: 4
+        },
+        {
+          name: "A1",
+          color: "red",
+          repetitions: 4,
+          measures: 8,
+          time_signature_over: 6,
+          time_signature_under: 8,
+          musical_key: "C Arabic",
+          song_id: 4
+        },
+        {
+          name: "A2",
+          color: "red",
+          repetitions: 2,
+          measures: 8,
+          time_signature_over: 6,
+          time_signature_under: 8,
+          musical_key: "C Arabic",
+          song_id: 4
+        },
+        {
+          name: "A3",
+          color: "red",
+          repetitions: 1,
+          measures: 8,
+          time_signature_over: 6,
+          time_signature_under: 8,
+          musical_key: "C Arabic",
+          song_id: 4
+        },
+        {
+          name: "B1",
+          color: "pink",
+          repetitions: 2,
+          measures: 8,
+          time_signature_over: 6,
+          time_signature_under: 8,
+          musical_key: "C Arabic",
+          song_id: 4
+        },
+        {
+          name: "B2",
+          color: "pink",
+          repetitions: 5,
+          measures: 8,
+          time_signature_over: 6,
+          time_signature_under: 8,
+          musical_key: "C Arabic",
+          song_id: 4
+        },
+        {
+          name: "BB",
+          color: "pink",
+          repetitions: 1,
+          measures: 8,
+          time_signature_over: 6,
+          time_signature_under: 8,
+          musical_key: "C Arabic",
+          song_id: 4
+        },
+        {
+          name: "C",
+          color: "green",
+          repetitions: 2,
+          measures: "8",
+          time_signature_over: 6,
+          time_signature_under: 8,
+          musical_key: "C Arabic",
+          song_id: 4
+        },
+        {
+          name: "A4",
+          color: "red",
+          repetitions: 3,
+          measures: 6,
+          time_signature_over: 6,
+          time_signature_under: 8,
+          musical_key: "C Arabic",
+          song_id: 4
+        }
+      ]
     }
     this.onSortEnd = this.onSortEnd.bind(this);
   }
 
+  // componentDidMount() {
+  //   let songId = this.props.match.params.id;
+  //   fetch(`/api/v1/songs/${songId}`)
+  //   .then(response => {
+  //     if (response.ok) {
+  //       return response;
+  //     } else {
+  //       let errorMessage = `${response.status} (${response.statusText})`,
+  //       error = new Error(errorMessage);
+  //     }
+  //   })
+  //   .then((response) => response.json())
+  //   .then((responseData) => {
+  //     this.setState({
+  //       song: responseData["song"],
+  //       blocks: responseData["blocks"]
+  //     })
+  //   })
+  //   .catch(error => console.error(`Error in fetch: ${error.message}`))
+  // }
+
   onSortEnd({oldIndex, newIndex}) {
     this.setState({
-      items: arrayMove(this.state.items, oldIndex, newIndex),
+      blocks: arrayMove(this.state.blocks, oldIndex, newIndex),
     });
   };
 
   render() {
-    console.log(this.state.items)
-    return (
-      <SortableList
-        items={this.state.items}
-        onSortEnd={this.onSortEnd}
-      />
-    );
+    console.log(this.state.blocks)
+
+    return(
+      <div className="row">
+        <div className="small-11 small-centered medium-9 medium-centered columns">
+          <SortableList
+            blocks={this.state.blocks}
+            onSortEnd={this.onSortEnd}
+          />
+        </div>
+      </div>
+    )
   }
 }
 
-export default SongShowContainerNew;
+export default SongShowContainer;

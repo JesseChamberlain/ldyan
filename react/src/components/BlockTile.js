@@ -1,6 +1,7 @@
 import React from 'react';
+import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
-const BlockTile = (props) => {
+const BlockTile = SortableElement((props) => {
   let block = props.block
   let timeSig = `${block.time_signature_over}/${block.time_signature_under}`
   return (
@@ -15,6 +16,6 @@ const BlockTile = (props) => {
       </div>
     </div>
   );
-}
+})
 
 export default BlockTile;
