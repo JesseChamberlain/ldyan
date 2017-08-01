@@ -64,10 +64,10 @@ class SongShowContainer extends Component {
   // Resorts the array after dragging.
   onSortEnd({oldIndex, newIndex}) {
     this.setState({
-      blocks: arrayMove(this.state.blocks, oldIndex, newIndex),
+      blocks: arrayMove(this.state.blocks, oldIndex, newIndex)
     });
     this.updateSongBlocks(this.state.blocks)
-  };
+  }
 
   render() {
     return(
