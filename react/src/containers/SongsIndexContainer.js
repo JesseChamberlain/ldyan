@@ -40,7 +40,7 @@ class SongsIndexContainer extends Component {
 
     return(
       <div className="row">
-        <div className="small-11 small-centered medium-8 medium-centered columns">
+        <div className="small-11 small-centered medium-9 medium-centered columns">
           <h1 className="title">Songs</h1>
           <hr/>
           {songs}
