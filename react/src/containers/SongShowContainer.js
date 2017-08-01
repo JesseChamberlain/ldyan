@@ -46,7 +46,7 @@ class SongShowContainer extends Component {
 
     return(
       <div className="row">
-        <div className="small-6 small-centered columns">
+        <div className="small-11 small-centered medium-9 medium-centered columns">
           {blocks}
         </div>
       </div>

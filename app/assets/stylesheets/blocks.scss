@@ -6,7 +6,13 @@
 }
 
 #block-name {
-  font-size: 3em;
+  font-size: 8.55em;
+  font-weight: bold;
+}
+
+#block-repetitions {
+  font-size: 5em;
+  font-weight: bold;
 }
 
 div .block-tile {
@@ -15,7 +21,7 @@ div .block-tile {
 
 div .block-tile-red {
   border: 6px solid #FF6200;
-  background: #444444;
+  background: #222222;
   color: #FF6200;
   text-align: center;
   padding: 15px;
@@ -23,7 +29,7 @@ div .block-tile-red {
 
 div .block-tile-green {
   border: 6px solid #B5F700;
-  background: #444444;
+  background: #222222;
   color: #B5F700;
   text-align: center;
   padding: 15px;
@@ -31,12 +37,19 @@ div .block-tile-green {
 
 div .block-tile-pink {
   border: 6px solid #DB0099;
-  background: #444444;
+  background: #222222;
   color: #DB0099;
   text-align: center;
   padding: 15px;
 }
 
+div .song-tile {
+  // background: #222222;
+  padding: 15px;
+  border-bottom: 2px solid #909B98;
+}
+
 .text-link {
   color: #00CB9D;
+  font-size: 3em;
 }
