@@ -1,7 +1,9 @@
 import BlockTile from '../../src/components/BlockTile';
+import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
 describe('BlockTile', () => {
-  let wrapper;
+  let wrapper
+  let index = 1
   let block =
   {
     id: 1,
@@ -17,9 +19,7 @@ describe('BlockTile', () => {
 
   beforeEach(() => {
     wrapper = mount(
-      <BlockTile
-        block= {block}
-      />
+      <BlockTile index={index} block= {block}/>
     )
   });
 

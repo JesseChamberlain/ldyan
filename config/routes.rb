@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   get '/songs', to: 'home#index'
   get '/songs/:id', to: 'home#index'
 
-
   namespace :api do
     namespace :v1 do
       resources :songs, only: [:index, :show, :update] do

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import BlockTile from '../components/BlockTile';
+import SortableList from '../containers/SortableList';
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
 class SongShowContainer extends Component {
@@ -9,8 +9,11 @@ class SongShowContainer extends Component {
       song: {},
       blocks: []
     }
+    this.onSortEnd = this.onSortEnd.bind(this);
+    this.updateSongBlocks = this.updateSongBlocks.bind(this);
   }
 
+  // Fetch initial blocks
   componentDidMount() {
     let songId = this.props.match.params.id;
     fetch(`/api/v1/songs/${songId}`)
@@ -32,23 +35,44 @@ class SongShowContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
-  render() {
-    console.log(this.state.song)
-    console.log(this.state.blocks)
-
-    let blocks = this.state.blocks.map(block => {
-      return(
-        <BlockTile
-          key={block.id}
-          block={block}
-        />
-      )
+  // Send resorted array PATCH as JSON
+  updateSongBlocks(blocks) {
+    let data = {blocks: blocks};
+    let jsonStringData = JSON.stringify(data);
+    let songId = this.props.match.params.id;
+    fetch(`/api/v1/songs/${songId}`, {
+      method: 'PATCH',
+      body: jsonStringData
     })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      console.log(body);
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
 
+  // Resorts the array after dragging.
+  onSortEnd({oldIndex, newIndex}) {
+    this.setState({
+      blocks: arrayMove(this.state.blocks, oldIndex, newIndex),
+    });
+    this.updateSongBlocks(this.state.blocks)
+  };
+
+  render() {
     return(
       <div className="row">
         <div className="small-11 small-centered medium-9 medium-centered columns">
-          {blocks}
+          <SortableList blocks={this.state.blocks} onSortEnd={this.onSortEnd} />
         </div>
       </div>
     )

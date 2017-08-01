@@ -14,10 +14,10 @@ class Api::V1::SongsController < ApplicationController
   def update
     data = JSON.parse(request.body.read)
     blocks = Song.find(params[:id]).blocks
-    # Logic to post to Database
     blocks.each do |block|
       data["blocks"].each do |d|
         if d["id"] == block["id"]
+          # # Logic to post to Database
           # unless d.location == block.location
           #   block.location = d.location
           #   # block.save
