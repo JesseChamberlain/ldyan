@@ -1,3 +1,24 @@
 // Place all the styles related to the songs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$blue   : #00CB9D;
+$grey   : #909B98;
+
+a {
+  color: $blue;
+}
+
+.title {
+  color: $grey;
+}
+
+.text-link {
+  color: $blue;
+  font-size: 3em;
+}
+
+div .song-tile {
+  padding: 15px;
+  border-bottom: 2px solid $grey;
+}

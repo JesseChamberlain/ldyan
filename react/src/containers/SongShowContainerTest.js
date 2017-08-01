@@ -23,7 +23,6 @@ class SongShowContainerTest extends Component {
   }
 
   onSortEnd({oldIndex, newIndex}) {
-    debugger
     this.setState({
       items: arrayMove(this.state.items, oldIndex, newIndex),
     });
@@ -32,7 +31,6 @@ class SongShowContainerTest extends Component {
 
   render() {
     console.log(this.state.items)
-    debugger
     return (
       <SortableList
         items={this.state.items}
