@@ -8,6 +8,7 @@ class Api::V1::SongsController < ApplicationController
   def show
     song = Song.find(params[:id])
     blocks = song.blocks
+    blocks.sort_by { |b| b["location"] }
     render json: {song: song, blocks: blocks}
   end
 
@@ -15,13 +16,16 @@ class Api::V1::SongsController < ApplicationController
     data = JSON.parse(request.body.read)
     blocks = Song.find(params[:id]).blocks
     blocks.each do |block|
-      data["blocks"].each do |d|
+      data["blocks"].each_with_index do |d, i|
+        new_location = (i + 1)
         if d["id"] == block["id"]
-          # # Logic to post to Database
-          # unless d.location == block.location
-          #   block.location = d.location
-          #   # block.save
-          # end
+          binding.pry
+          # Logic to post to Database
+          unless new_location == block.location
+            binding.pry
+            block.location = new_location
+            # block.save
+          end
         end
       end
     end

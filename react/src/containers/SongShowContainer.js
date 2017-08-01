@@ -27,9 +27,10 @@ class SongShowContainer extends Component {
     })
     .then((response) => response.json())
     .then((responseData) => {
+      let blocks = responseData["blocks"]
       this.setState({
         song: responseData["song"],
-        blocks: responseData["blocks"]
+        blocks: blocks
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
