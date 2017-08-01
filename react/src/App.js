@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import SongsIndexContainer from './containers/SongsIndexContainer';
+import SongShowContainerNew from './containers/SongShowContainerNew';
 import SongShowContainer from './containers/SongShowContainer';
 
 const App = () => {
@@ -10,7 +11,7 @@ const App = () => {
         <Switch>
           <Route exact path='/' component={SongsIndexContainer} />
           <Route exact path='/songs' component={SongsIndexContainer} />
-          <Route exact path='/songs/:id' component={SongShowContainer} />
+          <Route exact path='/songs/:id' component={SongShowContainerNew} />
         </Switch>
       </div>
     </BrowserRouter>
