@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BlockTile from '../components/BlockTile';
+import {SortableContainer, SortableElement} from 'react-sortable-hoc';
 
 class SongShowContainer extends Component {
   constructor(props) {
