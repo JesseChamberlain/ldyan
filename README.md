@@ -3,12 +3,15 @@
 ![Coverage Status](https://coveralls.io/repos/github/JesseChamberlain/ldyan/badge.svg?branch=master)
 
 # README
-This repository contains the source code for the song mapping application Ldyan (lid-ee-uh n).
+This repository contains the source code for the song mapping application Ldyan (lid-ee-uhn).
 
 ## Technologies
-* Rails
-* React
-* Jasmine & Enzyme Testing
+* Rails, 5.0.0.1
+* React, 15.6.1
+* React Router, 4.1.2
+* React Sortable, 0.6.6
+* Jasmine & Enzyme Testing, 3.6.1
+* Node, 7.9.0
 
 ## Setup
 To get started, clone and run the following in your terminal:
@@ -26,6 +29,6 @@ yarn start
 
 Navigate to: ```localhost:3000```
 
-To run ruby tests: ```rake```
+To run Ruby tests: ```rake```
 
 To run Enzyme tests:```yarn test```
