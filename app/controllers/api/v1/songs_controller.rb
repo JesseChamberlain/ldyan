@@ -26,5 +26,8 @@ class Api::V1::SongsController < ApplicationController
         end
       end
     end
+    song = Song.find(params[:id])
+    sorted_blocks = blocks.sort_by{|b| b["location"]}
+    render json: {song: song, blocks: sorted_blocks}
   end
 end
