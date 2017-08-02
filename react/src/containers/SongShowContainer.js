@@ -16,7 +16,7 @@ class SongShowContainer extends Component {
   // Fetch initial blocks
   componentDidMount() {
     let songId = this.props.match.params.id;
-    fetch(`/api/v1/songs/${songId}`)
+    fetch(`https://ldyan.herokuapp.com/api/v1/songs/${songId}`)
     .then(response => {
       if (response.ok) {
         return response;
