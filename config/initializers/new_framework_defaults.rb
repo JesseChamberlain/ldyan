@@ -1,8 +1,8 @@
 # Be sure to restart your server when you modify this file.
 #
-# This file contains migration options to ease your Rails 5.0 upgrade.
+# This file contains migration options to ease your Rails 5.1 upgrade.
 #
-# Read the Rails 5.0 release notes for more info on each option.
+# Read the Rails 5.1 release notes for more info on each option.
 
 # Enable per-form CSRF tokens. Previous versions had false.
 Rails.application.config.action_controller.per_form_csrf_tokens = true

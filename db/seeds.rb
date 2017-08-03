@@ -52,7 +52,9 @@ BLOCKS = [
     time_signature_over: "6",
     time_signature_under: "8",
     musical_key: "C Arabic",
-    song_id: Song.find_by(name: "Seraphina").id
+    song_id: Song.find_by(name: "Seraphina").id,
+    location: "1",
+    tempo: "68"
   },
   {
     name: "A1",
@@ -62,7 +64,9 @@ BLOCKS = [
     time_signature_over: "6",
     time_signature_under: "8",
     musical_key: "C Arabic",
-    song_id: Song.find_by(name: "Seraphina").id
+    song_id: Song.find_by(name: "Seraphina").id,
+    location: "2",
+    tempo: "68"
   },
   {
     name: "A2",
@@ -72,7 +76,9 @@ BLOCKS = [
     time_signature_over: "6",
     time_signature_under: "8",
     musical_key: "C Arabic",
-    song_id: Song.find_by(name: "Seraphina").id
+    song_id: Song.find_by(name: "Seraphina").id,
+    location: "3",
+    tempo: "68"
   },
   {
     name: "A3",
@@ -82,7 +88,9 @@ BLOCKS = [
     time_signature_over: "6",
     time_signature_under: "8",
     musical_key: "C Arabic",
-    song_id: Song.find_by(name: "Seraphina").id
+    song_id: Song.find_by(name: "Seraphina").id,
+    location: "4",
+    tempo: "68"
   },
   {
     name: "B1",
@@ -92,7 +100,9 @@ BLOCKS = [
     time_signature_over: "6",
     time_signature_under: "8",
     musical_key: "C Arabic",
-    song_id: Song.find_by(name: "Seraphina").id
+    song_id: Song.find_by(name: "Seraphina").id,
+    location: "5",
+    tempo: "68"
   },
   {
     name: "B2",
@@ -102,7 +112,9 @@ BLOCKS = [
     time_signature_over: "6",
     time_signature_under: "8",
     musical_key: "C Arabic",
-    song_id: Song.find_by(name: "Seraphina").id
+    song_id: Song.find_by(name: "Seraphina").id,
+    location: "6",
+    tempo: "68"
   },
   {
     name: "BB",
@@ -112,7 +124,9 @@ BLOCKS = [
     time_signature_over: "6",
     time_signature_under: "8",
     musical_key: "C Arabic",
-    song_id: Song.find_by(name: "Seraphina").id
+    song_id: Song.find_by(name: "Seraphina").id,
+    location: "7",
+    tempo: "68"
   },
   {
     name: "C",
@@ -122,7 +136,9 @@ BLOCKS = [
     time_signature_over: "6",
     time_signature_under: "8",
     musical_key: "C Arabic",
-    song_id: Song.find_by(name: "Seraphina").id
+    song_id: Song.find_by(name: "Seraphina").id,
+    location: "8",
+    tempo: "68"
   },
   {
     name: "A4",
@@ -132,7 +148,9 @@ BLOCKS = [
     time_signature_over: "6",
     time_signature_under: "8",
     musical_key: "C Arabic",
-    song_id: Song.find_by(name: "Seraphina").id
+    song_id: Song.find_by(name: "Seraphina").id,
+    location: "9",
+    tempo: "68"
   }
 ].freeze
 
@@ -145,7 +163,9 @@ BLOCKS.each do |b|
     time_signature_over: b[:time_signature_over],
     time_signature_under: b[:time_signature_under],
     musical_key: b[:musical_key],
-    song_id: b[:song_id]
+    song_id: b[:song_id],
+    location: b[:location],
+    tempo: b[:tempo]
   )
   block.assign_attributes(b)
   block.save!

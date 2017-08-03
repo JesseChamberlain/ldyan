@@ -22,7 +22,15 @@ class Block < ApplicationRecord
     only_integer: true,
     greater_than_or_equal_to: 2,
     less_than_or_equal_to: 16
-  validates_numericality_of :location, only_integer: true
+  validates_numericality_of :location,
+    only_integer: true,
+    greater_than_or_equal_to: 1,
+    less_than_or_equal_to: 250
+  validates_numericality_of :tempo,
+    allow_nil: true,
+    only_integer: true,
+    greater_than_or_equal_to: 1,
+    less_than_or_equal_to: 250
 
   belongs_to :song
 end
