@@ -8,5 +8,7 @@ FactoryGirl.define do
     musical_key "C Arabic"
     song_id "4"
     color "green"
+    sequence(:location) {|n| "#{n}"}
+    tempo "75"
   end
 end
