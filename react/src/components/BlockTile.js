@@ -4,6 +4,7 @@ import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc'
 const BlockTile = SortableElement((props) => {
   let block = props.block
   let timeSig = `${block.time_signature_over}/${block.time_signature_under}`
+
   return (
     <div className="block-tile row">
       <div className={`block-tile-${block.color} small-7 columns`}>
@@ -15,7 +16,7 @@ const BlockTile = SortableElement((props) => {
         <p id="block-scale">Key: {block.musical_key}</p>
       </div>
     </div>
-  );
+  )
 })
 
 export default BlockTile;

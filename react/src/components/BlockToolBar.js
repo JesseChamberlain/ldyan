@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import BlockForm from '../components/BlockForm';
 
 class BlockToolBar extends Component {
   constructor(props) {
@@ -8,17 +9,21 @@ class BlockToolBar extends Component {
       clicked: false,
       timeOver: null,
       timeUnder: null,
-      color: "green"
+      color: "green",
+      block: null,
+      newEditDelete: "New"
     }
     this.handleClick = this.handleClick.bind(this)
     this.handleTimeOverChange = this.handleTimeOverChange.bind(this)
     this.handleTimeUnderChange = this.handleTimeUnderChange.bind(this)
     this.handleColorChange = this.handleColorChange.bind(this)
+    this.handleBlockChange = this.handleBlockChange.bind(this)
+    this.handleNEDToggleChange = this.handleNEDToggleChange.bind(this)
   }
 
   handleTimeOverChange(event) {
     let value = event.target.value;
-    if (value === '-') {
+    if (value === '') {
       this.setState({ timeOver: null });
     } else {
       this.setState({ timeOver: value });
@@ -27,7 +32,7 @@ class BlockToolBar extends Component {
 
   handleTimeUnderChange(event) {
     let value = event.target.value;
-    if (value === '-') {
+    if (value === '') {
       this.setState({ timeUnder: null });
     } else {
       this.setState({ timeUnder: value });
@@ -37,6 +42,20 @@ class BlockToolBar extends Component {
   handleColorChange(event) {
     let value = event.target.value;
     this.setState({ color: value });
+  }
+
+  handleNEDToggleChange(event) {
+    let value = event.target.value;
+    this.setState({ newEditDelete: value });
+  }
+
+  handleBlockChange(event) {
+    let value = event.target.value;
+    if (value === '') {
+      this.setState({ block: null });
+    } else {
+      this.setState({ block: value });
+    }
   }
 
   handleClick(event) {
@@ -49,85 +68,80 @@ class BlockToolBar extends Component {
   }
 
   render() {
+    let toggle = this.state.newEditDelete
+    let toggleLabel
+    let formData
+    if (toggle === "New") {
+      toggleLabel = "Define/Duplicate"
+      formData = {
+        toggle: toggle,
+        timeOver: this.state.timeOver,
+        timeUnder: this.state.timeUnder,
+        color: this.state.color,
+        handleColorChange: this.handleColorChange,
+        handleTimeUnderChange: this.handleTimeUnderChange,
+        handleTimeOverChange: this.handleTimeOverChange
+      }
+    } else if (toggle === "Edit") {
+      toggleLabel = "Edit"
+      formData = {
+        toggle: toggle,
+        timeOver: this.state.timeOver,
+        timeUnder: this.state.timeUnder,
+        color: this.state.color,
+        handleColorChange: this.handleColorChange,
+        handleTimeUnderChange: this.handleTimeUnderChange,
+        handleTimeOverChange: this.handleTimeOverChange
+      }
+    } else {
+      toggleLabel = "Delete"
+      formData = null
+    }
 
     let tools
     if (this.state.clicked) {
       tools =
       <div className="tool-bar">
-        <div className="tools-button">
-          <button className="button tool-text" onClick={this.handleClick}>Done</button>
-          <button className="button tool-text">New</button>
-          <button className="button tool-text">Edit</button>
-          <button className="button tool-text">Delete</button>
+        <div className="tools-button tool-text">
+          <button
+            className="button tool-text"
+            onClick={this.handleClick}
+          >Done
+          </button>
+          <button
+            className="button tool-text"
+            onClick={this.handleNEDToggleChange}
+            value="New"
+          >New
+          </button>
+          <button
+            className="button tool-text"
+            onClick={this.handleNEDToggleChange}
+            value="Edit"
+          >Edit
+          </button>
+          <button
+            className="button tool-text"
+            onClick={this.handleNEDToggleChange}
+            value="Delete"
+          >Delete
+          </button>
         </div>
         <div className="row">
-          <div className="small-8 columns">
-            <label><span className="label-text">Block Name *</span>
-              <input name="name" type='text' />
-            </label>
-          </div>
-          <div className="small-2 columns">
-            <label><span className="label-text">Repetitions *</span>
-              <input name="name" type='text' />
-            </label>
-          </div>
-          <div className="small-2 columns">
-            <label><span className="label-text">Measures *</span>
-              <input name="name" type='text' />
-            </label>
-          </div>
-          <div className="small-4 columns">
-            <label><span className="label-text">Scale/Key</span>
-              <input name="name" type='text' />
-            </label>
-          </div>
-          <div className="small-2 columns">
-            <label><span className="label-text">Tempo (BPM)</span>
-              <input name="name" type='text' />
-            </label>
-          </div>
-          <div className="small-2 columns">
-            <label><span className="label-text">Time Over</span>
-              <select value={this.state.timeOver} onChange={this.handleTimeOverChange}>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
+          <div className="small-12 columns">
+            <label>
+              <span className="label-text">Blocks: {toggleLabel}</span>
+              <select value={this.state.block} onChange={this.handleBlockChange}>
+                <option value="">New</option>
+                <option value="A1">A1</option>
+                <option value="B1">B1</option>
+                <option value="B2">B2</option>
               </select>
             </label>
           </div>
-          <div className="small-2 columns">
-            <label><span className="label-text">Time Under</span>
-              <select value={this.state.timeUnder} onChange={this.handleTimeUnderChange}>
-                <option value="2">2</option>
-                <option value="4">4</option>
-                <option value="6">6</option>
-                <option value="8">8</option>
-                <option value="16">16</option>
-              </select>
-            </label>
-          </div>
-          <div className="small-2 columns">
-            <label><span className="label-text">Color</span>
-              <select value={this.state.color} onChange={this.handleColorChange}>
-                <option value="green">Green</option>
-                <option value="red">Red</option>
-                <option value="pink">Pink</option>
-              </select>
-            </label>
-          </div>
+          <BlockForm
+            formData={formData}
+          />
         </div>
       </div>
     } else {
