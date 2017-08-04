@@ -1,19 +1,18 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import LandingPageContainer from './containers/LandingPageContainer';
 import SongsIndexContainer from './containers/SongsIndexContainer';
 import SongShowContainer from './containers/SongShowContainer';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <Router>
       <div>
-        <Switch>
-          <Route exact path='/' component={SongsIndexContainer} />
-          <Route exact path='/songs' component={SongsIndexContainer} />
-          <Route exact path='/songs/:id' component={SongShowContainer} />
-        </Switch>
+        <Route exact path="/" component={LandingPageContainer}/>
+        <Route exact path="/songs" component={SongsIndexContainer}/>
+        <Route exact path="/songs/:id" component={SongShowContainer}/>
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }
 

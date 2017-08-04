@@ -15,5 +15,9 @@
  *= require foundation_and_overrides
  *= require blocks
  *= require songs
+ *= require nav
+ *= require application
+ *= require tool_bar
+ *= require landing
 
  */

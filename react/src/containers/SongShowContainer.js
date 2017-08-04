@@ -70,6 +70,7 @@ class SongShowContainer extends Component {
     return(
       <div className="row">
         <div className="small-11 small-centered medium-9 medium-centered columns">
+          <br/><br/><br/><br/><br/>
           <SortableList blocks={this.state.blocks} onSortEnd={this.onSortEnd} />
         </div>
       </div>

@@ -3,18 +3,21 @@
   <head>
     <title>Ldyan</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <div class="fixed">
+      <div class="top-bar nav-bar">
+        <ul class="menu">
+          <div class="left">
+            <li class="button text-link"><%= link_to 'Home', root_path %></li>
+          </div>
+        </ul>
+      </div>
+      <div id="tool-bar">
+      </div>
+    </div>
   </head>
 
   <body>
-    <div class="top-bar">
-      <ul class="menu">
-        <div class="left">
-          <li class="button text-link"><%= link_to 'Home', root_path %></li>
-        </div>
-      </ul>
-    </div>
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>

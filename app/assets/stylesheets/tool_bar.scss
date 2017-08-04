@@ -1,0 +1,24 @@
+$jet    : #222222;
+$red    : #FF6200;
+$green  : #B5F700;
+$pink   : #DB0099;
+$blue   : #00CB9D;
+$snow   : #909B98;
+
+.tool-bar {
+  background-color: rgba(34, 34, 34, 0.5);
+  color: $snow;
+  padding: 2px;
+}
+
+.tool-text {
+  color: $jet;
+}
+
+.tools-button {
+  color: $jet;
+}
+
+.label-text {
+  color: $snow;
+}
