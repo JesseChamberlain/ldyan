@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
-class ToolBar extends Component {
+class SongToolBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
       clicked: false
     }
     this.handleClick = this.handleClick.bind(this)
-
   }
 
   handleClick(event) {
@@ -30,14 +29,19 @@ class ToolBar extends Component {
           <button className="button tool-text" onClick={this.handleClick}>Done</button>
           <button className="button tool-text">New</button>
           <button className="button tool-text">Edit</button>
-          <button className="button tool-text">Delete</button>
         </div>
-        <label><span className="label-text">Name</span>
-          <input name="name" type='text' />
-        </label>
-        <label><span className="label-text">Description</span>
-          <input name="name" type='text' />
-        </label>
+        <div className="row">
+          <div className="small-12 columns">
+            <label><span className="label-text">Name *</span>
+              <input name="name" type='text' />
+            </label>
+          </div>
+          <div className="small-12 columns">
+            <label><span className="label-text">Description</span>
+              <input name="name" type='text' />
+            </label>
+          </div>
+        </div>
       </div>
     } else {
       tools =
@@ -54,4 +58,4 @@ class ToolBar extends Component {
   }
 }
 
-export default ToolBar;
+export default SongToolBar;

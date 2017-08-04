@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import SortableList from '../containers/SortableList';
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
+import ReactDOM from 'react-dom';
+import BlockToolBar from '../components/BlockToolBar'
 
 class SongShowContainer extends Component {
   constructor(props) {
@@ -34,6 +36,10 @@ class SongShowContainer extends Component {
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
+    ReactDOM.render(
+      <BlockToolBar />,
+      document.getElementById('tool-bar')
+    )
   }
 
   // Send resorted array PATCH as JSON
