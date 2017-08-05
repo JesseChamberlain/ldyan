@@ -7,62 +7,73 @@ const BlockForm = (props) => {
   if (data === null) {
     returnedData = null
   } else {
+    let block = data.block
+    let handlers = data.handlers
+
     returnedData =
       <div>
         <div className="small-8 columns">
           <label>
-            <span
-              className="label-text"
-              onChange=""
-            >Block Name *
-            </span>
-            <input name="name" type="text" value={data.toggle}/>
+            <span className="label-text" >Block Name *</span>
+            <input
+              name="name"
+              type="text"
+              value={block.name}
+              onChange={handlers.handleNameChange}
+            />
           </label>
         </div>
         <div className="small-2 columns">
           <label>
-            <span
-              className="label-text"
-              onChange=""
-            >Repetitions *
-            </span>
-            <input name="name" type="text" value={data.toggle}/>
+            <span className="label-text" >Repetitions *</span>
+            <input
+              name="name"
+              type="text"
+              value={block.repetitions}
+              onChange={handlers.handleRepetitionsChange}
+            />
           </label>
         </div>
         <div className="small-2 columns">
           <label>
-            <span
-              className="label-text"
-              onChange=""
-            >Measures *
-            </span>
-            <input name="name" type="text" value={data.toggle}/>
+            <span className="label-text" >Measures *</span>
+            <input
+              name="name"
+              type="text"
+              value={block.measures}
+              onChange={handlers.handleMeasuresChange}
+            />
           </label>
         </div>
         <div className="small-4 columns">
           <label>
-            <span
-              className="label-text"
-              onChange=""
-            >Scale/Key
-            </span>
-            <input name="name" type="text" value={data.toggle}/>
+            <span className="label-text" >Scale/Key</span>
+            <input
+              name="name"
+              type="text"
+              value={block.musicalKey}
+              onChange={handlers.handleMusicalKeyChange}
+            />
           </label>
         </div>
         <div className="small-2 columns">
           <label>
-            <span
-              className="label-text"
-              onChange=""
-            >Tempo (BPM)
-            </span>
-            <input name="name" type="text" value={data.toggle}/>
+            <span className="label-text" >Tempo (BPM)</span>
+            <input
+              name="name"
+              type="text"
+              value={block.tempo}
+              onChange={handlers.handleTempoChange}
+            />
           </label>
         </div>
         <div className="small-2 columns">
           <label>
             <span className="label-text">Time Over</span>
-            <select value={data.timeOver} onChange={data.handleTimeOverChange}>
+            <select
+              value={block.timeOver}
+              onChange={handlers.handleTimeOverChange}
+            >
               <option value=""></option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -86,7 +97,10 @@ const BlockForm = (props) => {
         <div className="small-2 columns">
           <label>
             <span className="label-text">Time Under</span>
-            <select value={data.timeUnder} onChange={data.handleTimeUnderChange}>
+            <select
+              value={block.timeUnder}
+              onChange={handlers.handleTimeUnderChange}
+            >
               <option value=""></option>
               <option value="2">2</option>
               <option value="4">4</option>
@@ -99,7 +113,10 @@ const BlockForm = (props) => {
         <div className="small-2 columns">
           <label>
             <span className="label-text">Color</span>
-            <select value={data.color} onChange={data.handleColorChange}>
+            <select
+              value={block.color}
+              onChange={handlers.handleColorChange}
+              >
               <option value="green">Green</option>
               <option value="red">Red</option>
               <option value="pink">Pink</option>

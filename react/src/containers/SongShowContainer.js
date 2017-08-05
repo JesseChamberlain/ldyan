@@ -36,8 +36,14 @@ class SongShowContainer extends Component {
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+
+  // Render ToolBar after Fetch
+  componentDidUpdate() {
     ReactDOM.render(
-      <BlockToolBar />,
+      <BlockToolBar
+        blocks={this.state.blocks}
+      />,
       document.getElementById('tool-bar')
     )
   }
@@ -64,7 +70,7 @@ class SongShowContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  // Resorts the array after dragging.
+  // Re-sorts the array after dragging.
   onSortEnd({oldIndex, newIndex}) {
     this.setState({
       blocks: arrayMove(this.state.blocks, oldIndex, newIndex)
