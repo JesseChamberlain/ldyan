@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :songs, only: [:index, :show, :update] do
         resources :blocks, only: [:index]
       end
+      resources :blocks, only: [:create, :update, :destroy]
     end
   end
 end

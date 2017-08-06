@@ -7,20 +7,17 @@ class BlockToolBar extends Component {
     super(props);
     this.state = {
       blocks: this.props.blocks,
+      id: '',
       name: '',
-      blockSelected: {
-        id: '',
-        name: '',
-        repetitions: '',
-        measures: '',
-        timeOver: '',
-        timeUnder: '',
-        musicalKey: '',
-        songId: '',
-        color: "green",
-        location: '',
-        tempo: ''
-      },
+      repetitions: '',
+      measures: '',
+      timeOver: '',
+      timeUnder: '',
+      musicalKey: '',
+      songId: '',
+      color: '',
+      location: '',
+      tempo: '',
       clicked: false,
       newEditDelete: "New",
       errors: {}
@@ -51,22 +48,22 @@ class BlockToolBar extends Component {
   handleBlockChange(event) {
     let value = event.target.value
     if (value == 0) {
-      this.setState({
-        name: '',
-        blockSelected: {
-          id: '',
-          name: '',
-          repetitions: '',
-          measures: '',
-          timeOver: '',
-          timeUnder: '',
-          musicalKey: '',
-          songId: '',
-          color: "green",
-          location: '',
-          tempo: ''
-        }
-      });
+      this.clearForm(event)
+      // this.setState({
+      //   blockSelected: {
+      //     id: '',
+      //     name: '',
+      //     repetitions: '',
+      //     measures: '',
+      //     timeOver: '',
+      //     timeUnder: '',
+      //     musicalKey: '',
+      //     songId: '',
+      //     color: "green",
+      //     location: '',
+      //     tempo: ''
+      //   }
+      // });
     } else {
       function findValue(block) {
         return block.id == value;
@@ -75,40 +72,23 @@ class BlockToolBar extends Component {
       let blocks = this.state.blocks
       let blockSelected = blocks.find(findValue)
       this.setState({
+        id: blockSelected.id,
         name: blockSelected.name,
-        blockSelected: {
-          id: blockSelected.id,
-          name: blockSelected.name,
-          repetitions: blockSelected.repetitions,
-          measures: blockSelected.measures,
-          timeOver: blockSelected.time_signature_over,
-          timeUnder: blockSelected.time_signature_under,
-          musicalKey: blockSelected.musical_key,
-          songId: blockSelected.song_id,
-          color: blockSelected.color,
-          location: blockSelected.location,
-          tempo: blockSelected.tempo
-        }
+        repetitions: blockSelected.repetitions,
+        measures: blockSelected.measures,
+        timeOver: blockSelected.time_signature_over,
+        timeUnder: blockSelected.time_signature_under,
+        musicalKey: blockSelected.musical_key,
+        songId: blockSelected.song_id,
+        color: blockSelected.color,
+        location: blockSelected.location,
+        tempo: blockSelected.tempo
       });
     }
   }
 
   handleInputChange(event) {
-    // this.setState({ blockSelected: { [event.target.name]: event.target.value } })
-
-    // // This might work?
-    // function findValue(block) {
-    //   return block.id == value;
-    // }
-    //
-    // let blocks = this.state.blocks
-    // let blockSelected = blocks.find(findValue)
-
-    if (event.target.name == "name"){
-      this.setState({ [event.target.name]: event.target.value })
-    } else {
-      this.setState({ blockSelected: { [event.target.name]: event.target.value } })
-    }
+    this.setState({ [event.target.name]: event.target.value })
   }
 
   validateNameSelection(selection) {
@@ -150,25 +130,10 @@ class BlockToolBar extends Component {
     }
   }
 
-  // Handle Fetch POST/PATCH/DELETE based on toggle buttons (split up maybe?)
   addNewBlock(formPayload) {
     let jsonStringData = JSON.stringify(formPayload);
-    let fetchMethod
-    let fetchLink
-    let toggle = this.state.newEditDelete
-    if (toggle == "New") {
-      fetchMethod = 'POST'
-      fetchLink = `/api/v1/blocks`
-    } else if (toggle == "Edit") {
-      fetchMethod = 'PATCH'
-      fetchLink = `/api/v1/blocks/${this.state.blockSelected.id}`
-    } else if (toggle == "Delete") {
-      fetchMethod = 'DELETE'
-      fetchLink = `/api/v1/blocks/${this.state.blockSelected.id}`
-    }
-
-    fetch(fetchLink, {
-      method: fetchMethod,
+    fetch(`/api/v1/blocks`, {
+      method: 'POST',
       body: jsonStringData
     })
     .then(response => {
@@ -187,41 +152,38 @@ class BlockToolBar extends Component {
   clearForm(event) {
     event.preventDefault()
     this.setState({
-      blockSelected: {
-        id: '',
-        name: '',
-        repetitions: '',
-        measures: '',
-        timeOver: '',
-        timeUnder: '',
-        musicalKey: '',
-        songId: '',
-        color: "green",
-        location: '',
-        tempo: ''
-      }
+      id: '',
+      name: '',
+      repetitions: '',
+      measures: '',
+      timeOver: '',
+      timeUnder: '',
+      musicalKey: '',
+      songId: '',
+      color: '',
+      location: '',
+      tempo: ''
     })
   }
 
   // Modify for App
   handleFormSubmit(event) {
-    let block = this.state.blockSelected
     let location = this.state.blocks.length + 1
-    if( this.validateNameSelection(block.name) &
-      this.validateRepetitionsSelection(block.repetitions) &
-      this.validateMeasuresSelection(block.measures)
+    if( this.validateNameSelection(this.state.name) &
+      this.validateRepetitionsSelection(this.state.repetitions) &
+      this.validateMeasuresSelection(this.state.measures)
     ){
       let formPayload = {
-        name: block.name,
-        repetitions: block.repetitions,
-        measures: block.measures,
-        time_signature_over: block.timeOver,
-        time_signature_under: block.timeUnder,
-        musical_key: block.musicalKey,
+        name: this.state.name,
+        repetitions: this.state.repetitions,
+        measures: this.state.measures,
+        time_signature_over: this.state.timeOver,
+        time_signature_under: this.state.timeUnder,
+        musical_key: this.state.musicalKey,
         song_id: this.props.song.id,
-        color: block.color,
+        color: this.state.color,
         location: location,
-        tempo: block.tempo
+        tempo: this.state.tempo
       };
       this.addNewBlock(formPayload)
       this.clearForm()
@@ -254,9 +216,18 @@ class BlockToolBar extends Component {
     } else {
       formData = {
         toggle: toggle,
-        block: this.state.blockSelected,
+        id: this.state.id,
         name: this.state.name,
-        handleInputChange: this.handleInputChange
+        repetitions: this.state.repetitions,
+        measures: this.state.measures,
+        timeOver: this.state.time_signature_over,
+        timeUnder: this.state.time_signature_under,
+        musicalKey: this.state.musical_key,
+        songId: this.state.song_id,
+        color: this.state.color,
+        location: this.state.location,
+        tempo: this.state.tempo,
+        handleChange: this.handleInputChange
       }
       if (toggle === "Edit") {
         toggleLabel = "edit"
@@ -310,7 +281,7 @@ class BlockToolBar extends Component {
               {errorDiv}
               <label>
                 <span className="label-text">Blocks:</span>
-                <select value={blockSelected.id} onChange={this.handleBlockChange}>
+                <select value={this.state.id} onChange={this.handleBlockChange}>
                   <option value="0">{toggleSelector}</option>
                   {blockSelector}
                 </select>
@@ -318,6 +289,13 @@ class BlockToolBar extends Component {
             </div>
             <BlockForm
               formData={formData}
+              clearForm={this.clearForm}
+              toggle={toggle}
+              handleFormSubmit={this.handleFormSubmit}
+              errorDiv={errorDiv}
+              handleBlockChange={this.handleBlockChange}
+              toggleSelector={toggleSelector}
+              blockSelector={blockSelector}
             />
             <div className="small-12 columns">
               <br/>

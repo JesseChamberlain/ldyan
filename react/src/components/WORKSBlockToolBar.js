@@ -7,7 +7,6 @@ class BlockToolBar extends Component {
     super(props);
     this.state = {
       blocks: this.props.blocks,
-      name: '',
       blockSelected: {
         id: '',
         name: '',
@@ -51,22 +50,21 @@ class BlockToolBar extends Component {
   handleBlockChange(event) {
     let value = event.target.value
     if (value == 0) {
-      this.setState({
-        name: '',
-        blockSelected: {
-          id: '',
-          name: '',
-          repetitions: '',
-          measures: '',
-          timeOver: '',
-          timeUnder: '',
-          musicalKey: '',
-          songId: '',
-          color: "green",
-          location: '',
-          tempo: ''
-        }
-      });
+      // this.setState({
+      //   blockSelected: {
+      //     id: '',
+      //     name: '',
+      //     repetitions: '',
+      //     measures: '',
+      //     timeOver: '',
+      //     timeUnder: '',
+      //     musicalKey: '',
+      //     songId: '',
+      //     color: "green",
+      //     location: '',
+      //     tempo: ''
+      //   }
+      // });
     } else {
       function findValue(block) {
         return block.id == value;
@@ -75,7 +73,6 @@ class BlockToolBar extends Component {
       let blocks = this.state.blocks
       let blockSelected = blocks.find(findValue)
       this.setState({
-        name: blockSelected.name,
         blockSelected: {
           id: blockSelected.id,
           name: blockSelected.name,
@@ -94,21 +91,7 @@ class BlockToolBar extends Component {
   }
 
   handleInputChange(event) {
-    // this.setState({ blockSelected: { [event.target.name]: event.target.value } })
-
-    // // This might work?
-    // function findValue(block) {
-    //   return block.id == value;
-    // }
-    //
-    // let blocks = this.state.blocks
-    // let blockSelected = blocks.find(findValue)
-
-    if (event.target.name == "name"){
-      this.setState({ [event.target.name]: event.target.value })
-    } else {
-      this.setState({ blockSelected: { [event.target.name]: event.target.value } })
-    }
+    this.setState({ blockSelected: { [event.target.name]: event.target.value } })
   }
 
   validateNameSelection(selection) {
@@ -255,7 +238,6 @@ class BlockToolBar extends Component {
       formData = {
         toggle: toggle,
         block: this.state.blockSelected,
-        name: this.state.name,
         handleInputChange: this.handleInputChange
       }
       if (toggle === "Edit") {

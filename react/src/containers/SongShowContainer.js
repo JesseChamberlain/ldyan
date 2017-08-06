@@ -42,6 +42,7 @@ class SongShowContainer extends Component {
   componentDidUpdate() {
     ReactDOM.render(
       <BlockToolBar
+        song={this.state.song}
         blocks={this.state.blocks}
       />,
       document.getElementById('tool-bar')

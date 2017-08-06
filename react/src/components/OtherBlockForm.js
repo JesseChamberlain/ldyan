@@ -7,8 +7,7 @@ const BlockForm = (props) => {
   if (data === null) {
     returnedData = null
   } else {
-    let block = data.block
-    let handleInputChange = data.handleInputChange
+    let handleChange = data.handleChange
 
     returnedData =
       <div>
@@ -19,7 +18,7 @@ const BlockForm = (props) => {
               name="name"
               type="text"
               value={data.name}
-              onChange={handleInputChange}
+              onChange={handleChange}
             />
           </label>
         </div>
@@ -29,8 +28,8 @@ const BlockForm = (props) => {
             <input
               name="repetitions"
               type="text"
-              value={block.repetitions}
-              onChange={handleInputChange}
+              value={data.repetitions}
+              onChange={handleChange}
             />
           </label>
         </div>
@@ -40,8 +39,8 @@ const BlockForm = (props) => {
             <input
               name="measures"
               type="text"
-              value={block.measures}
-              onChange={handleInputChange}
+              value={data.measures}
+              onChange={handleChange}
             />
           </label>
         </div>
@@ -51,8 +50,8 @@ const BlockForm = (props) => {
             <input
               name="musicalKey"
               type="text"
-              value={block.musicalKey}
-              onChange={handleInputChange}
+              value={data.musicalKey}
+              onChange={handleChange}
             />
           </label>
         </div>
@@ -62,8 +61,8 @@ const BlockForm = (props) => {
             <input
               name="tempo"
               type="text"
-              value={block.tempo}
-              onChange={handleInputChange}
+              value={data.tempo}
+              onChange={handleChange}
             />
           </label>
         </div>
@@ -72,8 +71,8 @@ const BlockForm = (props) => {
             <span className="label-text">Time Over</span>
             <select
               name="timeOver"
-              value={block.timeOver}
-              onChange={handleInputChange}
+              value={data.timeOver}
+              onChange={handleChange}
             >
               <option value=""></option>
               <option value="1">1</option>
@@ -100,8 +99,8 @@ const BlockForm = (props) => {
             <span className="label-text">Time Under</span>
             <select
               name="timeUnder"
-              value={block.timeUnder}
-              onChange={handleInputChange}
+              value={data.timeUnder}
+              onChange={handleChange}
             >
               <option value=""></option>
               <option value="2">2</option>
@@ -117,8 +116,8 @@ const BlockForm = (props) => {
             <span className="label-text">Color</span>
             <select
               name="color"
-              value={block.color}
-              onChange={handleInputChange}
+              value={data.color}
+              onChange={handleChange}
               >
               <option value="green">Green</option>
               <option value="red">Red</option>
@@ -127,6 +126,7 @@ const BlockForm = (props) => {
           </label>
         </div>
       </div>
+
   }
 
   return (
