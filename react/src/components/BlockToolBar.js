@@ -7,7 +7,6 @@ class BlockToolBar extends Component {
     super(props);
     this.state = {
       blocks: this.props.blocks,
-      name: '',
       blockSelected: {
         id: '',
         name: '',
@@ -30,7 +29,9 @@ class BlockToolBar extends Component {
     this.handleBlockChange = this.handleBlockChange.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
 
-    this.addNewBlock = this.addNewBlock.bind(this);
+    this.newBlock = this.newBlock.bind(this);
+    // this.editBlock = this.editBlock.bind(this);
+    // this.deleteBlock = this.deleteBlock.bind(this);
     this.clearForm = this.clearForm.bind(this)
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
@@ -52,7 +53,6 @@ class BlockToolBar extends Component {
     let value = event.target.value
     if (value == 0) {
       this.setState({
-        name: '',
         blockSelected: {
           id: '',
           name: '',
@@ -75,7 +75,6 @@ class BlockToolBar extends Component {
       let blocks = this.state.blocks
       let blockSelected = blocks.find(findValue)
       this.setState({
-        name: blockSelected.name,
         blockSelected: {
           id: blockSelected.id,
           name: blockSelected.name,
@@ -94,21 +93,9 @@ class BlockToolBar extends Component {
   }
 
   handleInputChange(event) {
-    // this.setState({ blockSelected: { [event.target.name]: event.target.value } })
-
-    // // This might work?
-    // function findValue(block) {
-    //   return block.id == value;
-    // }
-    //
-    // let blocks = this.state.blocks
-    // let blockSelected = blocks.find(findValue)
-
-    if (event.target.name == "name"){
-      this.setState({ [event.target.name]: event.target.value })
-    } else {
-      this.setState({ blockSelected: { [event.target.name]: event.target.value } })
-    }
+    let blockSelected = this.state.blockSelected
+    blockSelected[event.target.name] = event.target.value
+    this.setState({ blockSelected: blockSelected })
   }
 
   validateNameSelection(selection) {
@@ -150,26 +137,49 @@ class BlockToolBar extends Component {
     }
   }
 
-  // Handle Fetch POST/PATCH/DELETE based on toggle buttons (split up maybe?)
-  addNewBlock(formPayload) {
-    let jsonStringData = JSON.stringify(formPayload);
-    let fetchMethod
-    let fetchLink
-    let toggle = this.state.newEditDelete
-    if (toggle == "New") {
-      fetchMethod = 'POST'
-      fetchLink = `/api/v1/blocks`
-    } else if (toggle == "Edit") {
-      fetchMethod = 'PATCH'
-      fetchLink = `/api/v1/blocks/${this.state.blockSelected.id}`
-    } else if (toggle == "Delete") {
-      fetchMethod = 'DELETE'
-      fetchLink = `/api/v1/blocks/${this.state.blockSelected.id}`
-    }
+  // Handle Fetch POST
+  newBlock(formPayload) {
+    fetch(`/api/v1/blocks`, {
+      method: 'POST',
+      body: JSON.stringify(formPayload)
+    })
+    .then(response => {
+    	if (response.ok) {
+    	  return response;
+    	} else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw(error);
+    	}
+    })
+    .then(response => response.json())
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
 
-    fetch(fetchLink, {
-      method: fetchMethod,
-      body: jsonStringData
+  // Handle Fetch PATCH
+  editBlock(formPayload) {
+    fetch(`/api/v1/blocks/${this.state.blockSelected.id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(formPayload)
+    })
+    .then(response => {
+    	if (response.ok) {
+    	  return response;
+    	} else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw(error);
+    	}
+    })
+    .then(response => response.json())
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
+  // Handle Fetch DELETE
+  deleteBlock(formPayload) {
+    fetch(`/api/v1/blocks/${this.state.blockSelected.id}`, {
+      method: 'DELETE',
+      body: JSON.stringify(formPayload)
     })
     .then(response => {
     	if (response.ok) {
@@ -223,7 +233,14 @@ class BlockToolBar extends Component {
         location: location,
         tempo: block.tempo
       };
-      this.addNewBlock(formPayload)
+      let toggle = this.state.newEditDelete
+      if (toggle === "New") {
+        this.newBlock(formPayload)
+      } else if (toggle === "Edit") {
+        this.editBlock(formPayload)
+      } else if (toggle === "Delete") {
+        this.deleteBlock(formPayload)
+      }
       this.clearForm()
     }
   }
@@ -255,7 +272,6 @@ class BlockToolBar extends Component {
       formData = {
         toggle: toggle,
         block: this.state.blockSelected,
-        name: this.state.name,
         handleInputChange: this.handleInputChange
       }
       if (toggle === "Edit") {

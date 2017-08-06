@@ -18,7 +18,7 @@ const BlockForm = (props) => {
             <input
               name="name"
               type="text"
-              value={data.name}
+              value={block.name}
               onChange={handleInputChange}
             />
           </label>

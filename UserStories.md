@@ -34,6 +34,55 @@ Acceptance Criteria
 
 ```no-highlight
 As a contributor
+I want to add a private comment to a song
+So that I can add notes to myself
+```
+
+Acceptance Criteria
+- I should be able to add a comment that only I can see.
+
+```no-highlight
+As a contributor
+I want to add a global comment to a song
+So that I can add notes for the band
+```
+
+Acceptance Criteria
+- I should be able to add a comment that the entire band can see.
+
+### Finished
+```no-highlight
+As a band member
+I want to see a list of current songs
+So that I can choose a song
+```
+
+Acceptance Criteria
+- I should get to this page after logging in.
+- I should be presented with a list of links to songs in progress.
+
+
+```no-highlight
+As a band member
+I want to click a link to a song
+So that I can join and contribute to it
+```
+
+Acceptance Criteria
+- I should be able to click a song from the list and go to its working page.
+
+
+```no-highlight
+As a contributor
+I want to move a song structure block to somewhere else in the song chain
+So that I can rearrange the structure
+```
+
+Acceptance Criteria
+- I should be able to click on a structure block and reposition it in the song chain.
+
+```no-highlight
+As a contributor
 I want to add or remove a song structure block
 So that I can build a song
 ```
@@ -90,55 +139,6 @@ So that I can create an actual song format
 Acceptance Criteria
 - I should be able to add a time signature descriptor globally to all the blocks.  
 - I should be able to adjust the time signature descriptor of each structure block.
-
-```no-highlight
-As a contributor
-I want to add a private comment to a song
-So that I can add notes to myself
-```
-
-Acceptance Criteria
-- I should be able to add a comment that only I can see.
-
-```no-highlight
-As a contributor
-I want to add a global comment to a song
-So that I can add notes for the band
-```
-
-Acceptance Criteria
-- I should be able to add a comment that the entire band can see.
-
-### Finished
-```no-highlight
-As a band member
-I want to see a list of current songs
-So that I can choose a song
-```
-
-Acceptance Criteria
-- I should get to this page after logging in.
-- I should be presented with a list of links to songs in progress.
-
-
-```no-highlight
-As a band member
-I want to click a link to a song
-So that I can join and contribute to it
-```
-
-Acceptance Criteria
-- I should be able to click a song from the list and go to its working page.
-
-
-```no-highlight
-As a contributor
-I want to move a song structure block to somewhere else in the song chain
-So that I can rearrange the structure
-```
-
-Acceptance Criteria
-- I should be able to click on a structure block and reposition it in the song chain.
 
 ## Stretch
 

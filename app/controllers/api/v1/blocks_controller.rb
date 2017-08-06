@@ -10,18 +10,21 @@ class Api::V1::BlocksController < ApplicationController
   def create
     data = JSON.parse(request.body.read)
     block = Block.new(data)
-    # binding.pry
     block.save
     render json: { message: "Created Block" }
   end
 
   def update
     data = JSON.parse(request.body.read)
-    new_block = Block.new(data)
     block = Block.find(params[:id])
-    block = new_block
-    block.name = "Cat"
-    # binding.pry
+    block.name = data["name"]
+    block.repetitions = data["repetitions"]
+    block.measures = data["measures"]
+    block.time_signature_over = data["time_signature_over"]
+    block.time_signature_under = data["time_signature_under"]
+    block.musical_key = data["musical_key"]
+    block.color = data["color"]
+    block.tempo = data["tempo"]
     block.save
     render json: { message: "Updated Block" }
   end
