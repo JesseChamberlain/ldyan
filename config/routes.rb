@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :songs, only: [:index, :show, :update] do
+      resources :songs, only: [:index, :show, :create, :update, :destroy] do
         resources :blocks, only: [:index]
       end
       resources :blocks, only: [:create, :update, :destroy]

@@ -28,11 +28,6 @@ class BlockToolBar extends Component {
     this.handleNEDToggleChange = this.handleNEDToggleChange.bind(this)
     this.handleBlockChange = this.handleBlockChange.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
-
-    this.newBlock = this.newBlock.bind(this);
-    // this.editBlock = this.editBlock.bind(this);
-    // this.deleteBlock = this.deleteBlock.bind(this);
-    this.clearForm = this.clearForm.bind(this)
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
