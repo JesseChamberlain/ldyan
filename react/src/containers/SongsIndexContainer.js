@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import SongTile from '../components/SongTile';
+import ReactDOM from 'react-dom';
+import SongToolBar from '../components/SongToolBar'
 
 class SongsIndexContainer extends Component {
   constructor(props) {
@@ -27,6 +29,16 @@ class SongsIndexContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
+  // Render ToolBar after Fetch
+  componentDidUpdate() {
+    ReactDOM.render(
+      <SongToolBar
+        songs={this.state.songs}
+      />,
+      document.getElementById('tool-bar')
+    )
+  }
+
   render() {
     console.log(this.state.songs)
     let songs = this.state.songs.map(song => {
@@ -39,13 +51,14 @@ class SongsIndexContainer extends Component {
     })
 
     return(
-      <div className="row">
-        <div className="small-11 small-centered medium-9 medium-centered columns">
-          <h1 className="title">Songs</h1>
-          <hr/>
-          {songs}
+        <div className="row">
+          <div className="small-11 small-centered medium-9 medium-centered columns">
+            <br/><br/><br/><br/>
+            <h1 className="title">Songs</h1>
+            <hr/>
+            {songs}
+          </div>
         </div>
-      </div>
     )
   }
 }

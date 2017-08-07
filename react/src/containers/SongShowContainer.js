@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import SortableList from '../containers/SortableList';
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
+import ReactDOM from 'react-dom';
+import BlockToolBar from '../components/BlockToolBar';
 
 class SongShowContainer extends Component {
   constructor(props) {
@@ -36,6 +38,17 @@ class SongShowContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
+  // Render ToolBar after Fetch
+  componentDidUpdate() {
+    ReactDOM.render(
+      <BlockToolBar
+        song={this.state.song}
+        blocks={this.state.blocks}
+      />,
+      document.getElementById('tool-bar')
+    )
+  }
+
   // Send resorted array PATCH as JSON
   updateSongBlocks(blocks) {
     let data = {blocks: blocks};
@@ -58,7 +71,7 @@ class SongShowContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  // Resorts the array after dragging.
+  // Re-sorts the array after dragging.
   onSortEnd({oldIndex, newIndex}) {
     this.setState({
       blocks: arrayMove(this.state.blocks, oldIndex, newIndex)
@@ -70,7 +83,11 @@ class SongShowContainer extends Component {
     return(
       <div className="row">
         <div className="small-11 small-centered medium-9 medium-centered columns">
-          <SortableList blocks={this.state.blocks} onSortEnd={this.onSortEnd} />
+          <br/><br/><br/><br/><br/>
+          <SortableList
+            blocks={this.state.blocks}
+            onSortEnd={this.onSortEnd}
+          />
         </div>
       </div>
     )

@@ -2,11 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$jet    : #222222;
+$red    : #FF6200;
+$green  : #B5F700;
+$pink   : #DB0099;
 $blue   : #00CB9D;
 $grey   : #909B98;
 
 a {
-  color: $blue;
+  color: $jet;
 }
 
 .title {

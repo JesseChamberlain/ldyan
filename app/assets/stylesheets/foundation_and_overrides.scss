@@ -1368,7 +1368,7 @@ $panel-border-size: 5px;
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-$topbar-bg-color: $jet;
+$topbar-bg: $black;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
@@ -1408,7 +1408,7 @@ $topbar-height: 60px;
 // $topbar-link-dropdown-padding: 20px;
 
 // $topbar-button-font-size: 0.75rem;
-$topbar-button-top: 14px;
+$top-bar-button-top: 14px;
 
 // $topbar-dropdown-label-color: $monsoon;
 // $topbar-dropdown-label-text-transform: uppercase;
@@ -1436,7 +1436,7 @@ $topbar-button-top: 14px;
 // $topbar-divider-border-top: solid 1px scale-color($topbar-bg-color, $lightness: -50%);
 
 // Sticky Class
-// $topbar-sticky-class: ".sticky";
+$topbar-sticky-class: ".sticky";
 // $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
 
 // 36. Visibility Classes

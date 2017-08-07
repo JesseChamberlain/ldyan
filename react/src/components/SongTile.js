@@ -13,7 +13,3 @@ const SongTile = (props) => {
 }
 
 export default SongTile;
-
-/* <a href={`/songs/${song.id}`}>
-  <p>{song.name}</p>
-</a> */
