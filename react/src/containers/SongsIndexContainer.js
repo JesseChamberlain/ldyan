@@ -27,8 +27,14 @@ class SongsIndexContainer extends Component {
       this.setState({ songs : allSongs["songs"] })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+
+  // Render ToolBar after Fetch
+  componentDidUpdate() {
     ReactDOM.render(
-      <SongToolBar />,
+      <SongToolBar
+        songs={this.state.songs}
+      />,
       document.getElementById('tool-bar')
     )
   }
