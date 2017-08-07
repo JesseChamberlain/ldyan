@@ -173,7 +173,7 @@ class SongToolBar extends Component {
       let formPayload = {
         name: song.name,
         description: song.description
-      };
+      }
       let toggle = this.state.newEditDelete
       if (toggle === "New") {
         this.newSong(formPayload)
@@ -195,6 +195,7 @@ class SongToolBar extends Component {
     let formData
     let errorDiv
     let errorItems
+
     // Require fields error control
     if (Object.keys(this.state.errors).length > 0) {
       errorItems = Object.values(this.state.errors).map(error => {

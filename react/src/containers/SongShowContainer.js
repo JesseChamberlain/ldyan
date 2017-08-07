@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SortableList from '../containers/SortableList';
+import PlayableList from '../containers/PlayableList';
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 import ReactDOM from 'react-dom';
 import BlockToolBar from '../components/BlockToolBar';
@@ -84,6 +85,9 @@ class SongShowContainer extends Component {
       <div className="row">
         <div className="small-11 small-centered medium-9 medium-centered columns">
           <br/><br/><br/><br/><br/>
+          {/* <PlayableList
+            blocks={this.state.blocks}
+          /> */}
           <SortableList
             blocks={this.state.blocks}
             onSortEnd={this.onSortEnd}
