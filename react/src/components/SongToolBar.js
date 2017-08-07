@@ -20,6 +20,7 @@ class SongToolBar extends Component {
     this.handleNEDToggleChange = this.handleNEDToggleChange.bind(this)
     this.handleSongChange = this.handleSongChange.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
 
   handleClick(event) {
@@ -114,10 +115,11 @@ class SongToolBar extends Component {
   }
 
   // Handle Fetch PATCH
-  editSong(formPayload) {
+  editSong(song) {
+    let data = {song: song};
     fetch(`/api/v1/songs/${this.state.songSelected.id}`, {
       method: 'PATCH',
-      body: JSON.stringify(formPayload)
+      body: JSON.stringify(data)
     })
     .then(response => {
     	if (response.ok) {
@@ -164,7 +166,6 @@ class SongToolBar extends Component {
 
   // Modify for App
   handleFormSubmit(event) {
-    // not reading state for some reason??????
     let song = this.state.songSelected
     if( this.validateNameSelection(song.name) &
       this.validateDescriptionSelection(song.description)
@@ -175,7 +176,6 @@ class SongToolBar extends Component {
       };
       let toggle = this.state.newEditDelete
       if (toggle === "New") {
-        debugger
         this.newSong(formPayload)
       } else if (toggle === "Edit") {
         this.editSong(formPayload)
@@ -275,26 +275,6 @@ class SongToolBar extends Component {
             <SongForm
               formData={formData}
             />
-            {/* <div className="small-12 columns">
-              <label><span className="label-text">Name *</span>
-                <input
-                  name="name"
-                  type='text'
-                  value={songSelected.name}
-                  onChange={this.handleInputChange}
-                />
-              </label>
-            </div>
-            <div className="small-12 columns">
-              <label><span className="label-text">Description *</span>
-                <input
-                  name="description"
-                  type='text'
-                  value={songSelected.description}
-                  onChange={this.handleInputChange}
-                />
-              </label>
-            </div> */}
             <div className="small-12 columns">
               <br/>
               <button
