@@ -4,11 +4,13 @@ class PlayableList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      blocks: this.props.blocks
+      blocks: []
     }
   }
 
   getBeats(block){
+    console.log(block)
+    console.log("PlayableList get beats")
     function toArray (input) {
       let index = 0
       let array = []
@@ -18,7 +20,6 @@ class PlayableList extends Component {
       }
       return array
     }
-    debugger
     const bpm = block.tempo
     const measure = block.time_signature_over
     const repeat = block.repetitions
@@ -33,19 +34,33 @@ class PlayableList extends Component {
     console.log("msPerBeat:", msPerBeat)
     console.log("measureArray:", measureArray)
     console.log("repeatArray:", repeatArray)
+
   }
 
   componentWillMount(){
-
+    console.log(this.props.blocks)
+    console.log("PlayableList will mount")
   }
 
   componentDidMount(){
+    console.log(this.props.blocks)
+    console.log("PlayableList did mount")
+  }
 
+  componentDidUpdate() {
+    console.log(this.props.blocks)
+    console.log("PlayableList did update")
   }
 
   render () {
-
-    this.getBeats(this.state.blocks[0])
+    console.log(this.props.blocks)
+    console.log("PlayableList render")
+    let blocks = this.props.blocks
+    if (blocks.length > 0) {
+      for (let i = 0, len = blocks.length; i < len; i++) {
+        this.getBeats(blocks[i])
+      }
+    }
 
     return(
       <div>

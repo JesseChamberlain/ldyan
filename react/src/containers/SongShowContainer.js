@@ -81,13 +81,15 @@ class SongShowContainer extends Component {
   }
 
   render() {
+    console.log("SongShowContainer render")
+    console.log(this.state.blocks)
     return(
       <div className="row">
         <div className="small-11 small-centered medium-9 medium-centered columns">
           <br/><br/><br/><br/><br/>
-          {/* <PlayableList
+          <PlayableList
             blocks={this.state.blocks}
-          /> */}
+          />
           <SortableList
             blocks={this.state.blocks}
             onSortEnd={this.onSortEnd}
