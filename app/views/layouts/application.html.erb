@@ -10,6 +10,13 @@
           <div class="left">
             <li class="button text-link"><%= link_to 'Home', root_path %></li>
           </div>
+          <div class="right">
+          <% if user_signed_in?  %>
+              <li class="button text-link"><%= link_to 'Sign Out', '#' %></li>
+          <% else %>
+              <li class="button text-link"><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <% end %>
+          </div>
         </ul>
       </div>
       <div id="tool-bar">
