@@ -22,33 +22,6 @@ Acceptance Criteria
 - I should be able to visit the home page.
 - I should be presented with a small form to log in with my username and password.
 
-```no-highlight
-As a band member
-I want to be able to create a new song
-So that I can begin writing a new song map
-```
-
-Acceptance Criteria
-- I should see a button to add a new song, if a song is not yet on the list.
-- I should be taken to a new song page when I click the button.
-
-```no-highlight
-As a contributor
-I want to add a private comment to a song
-So that I can add notes to myself
-```
-
-Acceptance Criteria
-- I should be able to add a comment that only I can see.
-
-```no-highlight
-As a contributor
-I want to add a global comment to a song
-So that I can add notes for the band
-```
-
-Acceptance Criteria
-- I should be able to add a comment that the entire band can see.
 
 ### Finished
 ```no-highlight
@@ -61,6 +34,15 @@ Acceptance Criteria
 - I should get to this page after logging in.
 - I should be presented with a list of links to songs in progress.
 
+```no-highlight
+As a band member
+I want to be able to create a new song
+So that I can begin writing a new song map
+```
+
+Acceptance Criteria
+- I should see a button to add a new song, if a song is not yet on the list.
+- I should be taken to a new song page when I click the button.
 
 ```no-highlight
 As a band member
@@ -140,8 +122,6 @@ Acceptance Criteria
 - I should be able to add a time signature descriptor globally to all the blocks.  
 - I should be able to adjust the time signature descriptor of each structure block.
 
-## Stretch
-
 ```no-highlight
 As a contributor
 I want to have my song structure blocks playback in time
@@ -149,6 +129,26 @@ So I can have a visual cue to play along with
 ```
 
 Acceptance Criteria
+
+## Stretch
+
+```no-highlight
+As a contributor
+I want to add a private comment to a song
+So that I can add notes to myself
+```
+
+Acceptance Criteria
+- I should be able to add a comment that only I can see.
+
+```no-highlight
+As a contributor
+I want to add a global comment to a song
+So that I can add notes for the band
+```
+
+Acceptance Criteria
+- I should be able to add a comment that the entire band can see.
 
 ```no-highlight
 As a contributor

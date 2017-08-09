@@ -29,10 +29,8 @@ class PlayableList extends Component {
   componentDidMount(){
     console.log(this.props.blocks)
     console.log("PlayableList did mount")
-    setTimeout(() => this.wait, 500)
+    // setTimeout(() => this.wait, 500)
     setInterval(() => this.playThroughBlocks(this.state.playbackBlocks), 500)
-    // this.playThroughBlocks(this.state.playbackBlocks)
-    // setInterval(this.playThroughBlocks(this.state.playbackBlocks), 2000)
   }
 
   wait() {
