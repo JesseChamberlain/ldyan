@@ -1,5 +1,6 @@
 class Api::V1::BlocksController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :authenticate_user!, except: [:index, :create, :update, :destroy]
 
   def index
     song = Song.find(params[:song_id])
