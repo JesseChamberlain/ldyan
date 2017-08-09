@@ -20,7 +20,8 @@ class BlockToolBar extends Component {
         location: '',
         tempo: ''
       },
-      clicked: false,
+      toolsClicked: false,
+      playbackClicked: false,
       newEditDelete: "New",
       errors: {}
     }
@@ -32,11 +33,12 @@ class BlockToolBar extends Component {
   }
 
   handleClick(event) {
+    // edit this to toggle playback & tools button
     event.preventDefault()
-    if (this.state.clicked) {
-      this.setState({ clicked: false })
+    if (this.state.toolsClicked) {
+      this.setState({ toolsClicked: false })
     } else {
-      this.setState({ clicked: true })
+      this.setState({ toolsClicked: true })
     }
   }
 
@@ -279,7 +281,7 @@ class BlockToolBar extends Component {
     }
 
     // Defines On/Off for 'Tools' button
-    if (this.state.clicked) {
+    if (this.state.toolsClicked) {
       let blockSelector
       let blocks = this.state.blocks
       blockSelector = blocks.map(block => {
@@ -293,6 +295,7 @@ class BlockToolBar extends Component {
           <button
             className="button tool-text"
             onClick={this.handleClick}
+            value="Done"
           >Done
           </button>
           <button
@@ -350,7 +353,12 @@ class BlockToolBar extends Component {
     } else {
       tools =
       <div className="tools-button">
-        <button className="button tool-text" onClick={this.handleClick}>Tools</button>
+        <button
+          className="button tool-text"
+          onClick={this.handleClick}
+          value="Tools"
+        >Tools
+        </button>
       </div>
     }
 
