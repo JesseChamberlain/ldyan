@@ -4,45 +4,44 @@ class PlayableList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      blocks: [],
+      playbackBlocks: [],
       name: '',
       repeat: '',
       measure: '',
       timeSig: '',
-      color: ''
+      color: '',
+      pbIndex: 0,
+      rIndex: 0,
+      mIndex: 0,
+      tsIndex: 0
     }
   }
 
   componentWillMount(){
     console.log(this.props.blocks)
     console.log("PlayableList will mount")
+    let blocks = this.props.blocks
+    if (blocks.length > 0) {
+      this.createPlaybackBlocks(blocks)
+    }
   }
 
   componentDidMount(){
     console.log(this.props.blocks)
     console.log("PlayableList did mount")
-    let blocks = this.props.blocks
-    if (blocks.length > 0) {
-      this.getBeats(blocks)
-    }
+    setTimeout(() => this.wait, 500)
+    setInterval(() => this.playThroughBlocks(this.state.playbackBlocks), 500)
+    // this.playThroughBlocks(this.state.playbackBlocks)
+    // setInterval(this.playThroughBlocks(this.state.playbackBlocks), 2000)
   }
 
-  setDelay(name, repeat, measure, timeSig, bpm, color){
-    this.setState({
-      name: name,
-      repeat: repeat,
-      measure: measure,
-      timeSig: timeSig,
-      color: color
-    })
-
-    setTimeout(function(){
-      console.log(`Playback: N:${name} R:${repeat} M:${measure} TS:${timeSig}`);
-    }, bpm);
+  wait() {
+    let date = Date.now()
+    console.log(date);
   }
 
-  getBeats(blocks){
-    console.log("PlayableList getBeats")
+  createPlaybackBlocks(blocks){
+    console.log("PlayableList createPlaybackBlocks")
 
     let songLength = blocks.length
     let playbackBlocks =[]
@@ -79,58 +78,76 @@ class PlayableList extends Component {
         timeSig: timeSig,
         msPerBeat: msPerBeat
       })
-
-      // // To Console for Dev
-      // console.log("block:", block)
-      // console.log("bpm:", bpm)
-      // console.log("timeSig:", timeSig)
-      // console.log("measure:", measure)
-      // console.log("repeat:", repeat)
-      // console.log("msPerBeat:", msPerBeat)
-      // console.log("timeSigArray:", timeSigArray)
-      // console.log("measureArray:", measureArray)
-      // console.log("repeatArray:", repeatArray)
     }
+    this.setState({ playbackBlocks: playbackBlocks })
+  }
 
+  playThroughBlocks(playbackBlocks){
     // Variables for playback
     console.log("Playback Blocks:", playbackBlocks)
     console.log("Start countdown...")
-
-    // nested loops for playback
-
-
-    for (let i = 0; i < songLength; i++) {
-      let playbackBlock = playbackBlocks[i]
-      let namePB, repeatPB, measurePB, timeSigPB, bpmPB, color
+    let pbIndex = this.state.pbIndex
+    let rIndex = this.state.rIndex
+    let mIndex = this.state.mIndex
+    let tsIndex = this.state.tsIndex
+    let songLength = this.state.playbackBlocks.length
+    let namePB, repeatPB, measurePB, timeSigPB, bpmPB, color
+    while (pbIndex < songLength) {
+      let playbackBlock = playbackBlocks[pbIndex]
       namePB = playbackBlock.name
       bpmPB = playbackBlock.msPerBeat
       color = playbackBlock.color
-
-      for (let i = 0; i < playbackBlock.repeat; i++) {
-        repeatPB = playbackBlock.repeatArray[i]
-        for (let i = 0; i < playbackBlock.measure; i++) {
-           measurePB = playbackBlock.measureArray[i]
-          for (let i = 0; i < playbackBlock.timeSig; i++){
-            timeSigPB = playbackBlock.timeSigArray[i]
-            this.setDelay(namePB, repeatPB, measurePB, timeSigPB, bpmPB, color)
+      while (rIndex < playbackBlock.repeat) {
+        repeatPB = playbackBlock.repeatArray[rIndex]
+        while (mIndex < playbackBlock.measure) {
+          measurePB = playbackBlock.measureArray[mIndex]
+          while (tsIndex < playbackBlock.timeSig){
+            timeSigPB = playbackBlock.timeSigArray[tsIndex]
+            tsIndex++
+            if (tsIndex == playbackBlock.timeSig) {
+              tsIndex = 0
+              mIndex++
+              if (mIndex == playbackBlock.measure) {
+                tsIndex = 0
+                mIndex =0
+                rIndex++
+                if (rIndex == playbackBlock.repeat) {
+                  tsIndex = 0
+                  mIndex =0
+                  rIndex = 0
+                  pbIndex++
+                }
+              }
+            }
+            break
           }
+          // mIndex++
+          break
         }
+        // rIndex++
+        break
       }
+      // pbIndex++
+      break
     }
-  }
-
-
-  componentDidUpdate() {
-    console.log(this.props.blocks)
-    console.log("PlayableList did update")
+    console.log(pbIndex, rIndex, mIndex, tsIndex)
+    this.setState({
+      name: namePB,
+      repeat: repeatPB,
+      measure: measurePB,
+      timeSig: timeSigPB,
+      color: color,
+      pbIndex: pbIndex,
+      rIndex: rIndex,
+      mIndex: mIndex,
+      tsIndex: tsIndex
+    })
   }
 
   render () {
     console.log("PlayableList render")
-    // let blocks = this.props.blocks
-    // if (blocks.length > 0) {
-    //   this.getBeats(blocks)
-    // }
+    console.log(this.state.playbackBlocks)
+
     let name = this.state.name
     let repeat = this.state.repeat
     let measure = this.state.measure
