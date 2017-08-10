@@ -9,6 +9,16 @@ class LandingPageContainer extends Component {
   }
 
   render() {
+    let songLink
+    if (true){
+      songLink =
+      <div className="song-tile">
+        <Link to={`/songs`}>
+          <h1 className="text-link">Songs</h1>
+        </Link>
+      </div>
+    }
+
     return(
         <div className="row">
           <div className="small-11 small-centered medium-9 medium-centered columns">

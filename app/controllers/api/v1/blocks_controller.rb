@@ -1,6 +1,6 @@
 class Api::V1::BlocksController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :authenticate_user!, except: [:index, :create, :update, :destroy]
+  before_action :authorize_user
 
   def index
     song = Song.find(params[:song_id])
@@ -34,5 +34,11 @@ class Api::V1::BlocksController < ApplicationController
     block = Block.find(params[:id])
     block.delete
     render json: { message: "Deleted Block" }
+  end
+
+  def authorize_user
+    if !current_user
+      return render json: { errors: ['Please sign in/up'] }, status: 403
+    end
   end
 end
