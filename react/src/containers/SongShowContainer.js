@@ -19,7 +19,9 @@ class SongShowContainer extends Component {
   // Fetch initial blocks
   componentDidMount() {
     let songId = this.props.match.params.id;
-    fetch(`/api/v1/songs/${songId}`)
+    fetch(`/api/v1/songs/${songId}`, {
+      credentials: 'same-origin'
+    })
     .then(response => {
       if (response.ok) {
         return response;
@@ -57,6 +59,7 @@ class SongShowContainer extends Component {
     let songId = this.props.match.params.id;
     fetch(`/api/v1/songs/${songId}`, {
       method: 'PATCH',
+      credentials: 'same-origin',
       body: jsonStringData
     })
     .then(response => {

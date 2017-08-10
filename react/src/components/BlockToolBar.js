@@ -138,6 +138,7 @@ class BlockToolBar extends Component {
   newBlock(formPayload) {
     fetch(`/api/v1/blocks`, {
       method: 'POST',
+      credentials: 'same-origin',
       body: JSON.stringify(formPayload)
     })
     .then(response => {
@@ -157,6 +158,7 @@ class BlockToolBar extends Component {
   editBlock(formPayload) {
     fetch(`/api/v1/blocks/${this.state.blockSelected.id}`, {
       method: 'PATCH',
+      credentials: 'same-origin',
       body: JSON.stringify(formPayload)
     })
     .then(response => {
@@ -176,6 +178,7 @@ class BlockToolBar extends Component {
   deleteBlock(formPayload) {
     fetch(`/api/v1/blocks/${this.state.blockSelected.id}`, {
       method: 'DELETE',
+      credentials: 'same-origin',
       body: JSON.stringify(formPayload)
     })
     .then(response => {

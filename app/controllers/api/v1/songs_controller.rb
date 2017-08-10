@@ -1,7 +1,11 @@
 class Api::V1::SongsController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :authorize_user
 
   def index
+    if !current_user
+      return render json: { errors: ['Please sign in/up'] }, status: 403
+    end
     render json: Song.all
   end
 
@@ -55,5 +59,11 @@ class Api::V1::SongsController < ApplicationController
     end
     song.delete
     render json: { message: "Deleted Song & Blocks" }
+  end
+
+  def authorize_user
+    if !current_user
+      return render json: { errors: ['Please sign in/up'] }, status: 403
+    end
   end
 end

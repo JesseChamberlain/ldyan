@@ -9,6 +9,7 @@ class LandingPageContainer extends Component {
   }
 
   render() {
+
     return(
         <div className="row">
           <div className="small-11 small-centered medium-9 medium-centered columns">

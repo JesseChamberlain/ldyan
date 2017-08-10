@@ -12,7 +12,9 @@ class SongsIndexContainer extends Component {
   }
 
   componentDidMount() {
-    fetch('/api/v1/songs')
+    fetch('/api/v1/songs', {
+      credentials: 'same-origin'
+    })
     .then(response => {
       if (response.ok) {
         return response;
@@ -40,7 +42,6 @@ class SongsIndexContainer extends Component {
   }
 
   render() {
-    console.log(this.state.songs)
     let songs = this.state.songs.map(song => {
       return(
         <SongTile

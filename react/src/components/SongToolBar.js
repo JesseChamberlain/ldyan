@@ -99,6 +99,7 @@ class SongToolBar extends Component {
   newSong(formPayload) {
     fetch(`/api/v1/songs`, {
       method: 'POST',
+      credentials: 'same-origin',
       body: JSON.stringify(formPayload)
     })
     .then(response => {
@@ -119,6 +120,7 @@ class SongToolBar extends Component {
     let data = {song: song};
     fetch(`/api/v1/songs/${this.state.songSelected.id}`, {
       method: 'PATCH',
+      credentials: 'same-origin',
       body: JSON.stringify(data)
     })
     .then(response => {
@@ -138,6 +140,7 @@ class SongToolBar extends Component {
   deleteSong(formPayload) {
     fetch(`/api/v1/songs/${this.state.songSelected.id}`, {
       method: 'DELETE',
+      credentials: 'same-origin',
       body: JSON.stringify(formPayload)
     })
     .then(response => {
