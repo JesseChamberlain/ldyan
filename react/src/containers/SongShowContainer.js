@@ -97,6 +97,7 @@ class SongShowContainer extends Component {
         <div className="small-11 small-centered medium-9 medium-centered columns">
           <br/><br/><br/><br/><br/>
           {playableList}
+          <br/>
           <SortableList
             blocks={this.state.blocks}
             onSortEnd={this.onSortEnd}

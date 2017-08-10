@@ -13,14 +13,12 @@ class PlayableList extends Component {
       pbIndex: 0,
       rIndex: 0,
       mIndex: 0,
-      tsIndex: 0,
-      counter: 0
+      tsIndex: 0
     }
-    this.post = this.post.bind(this)
-    this.playback = this.playback.bind(this)
   }
 
   componentWillMount(){
+    console.log(this.props.blocks)
     console.log("PlayableList will mount")
     let blocks = this.props.blocks
     if (blocks.length > 0) {
@@ -29,23 +27,10 @@ class PlayableList extends Component {
   }
 
   componentDidMount(){
+    console.log(this.props.blocks)
     console.log("PlayableList did mount")
-    // let index = 0
-    // setTimeout(() => this.playThroughBlocks(this.state.playbackBlocks), 500)
-    // setTimeout(() => this.playThroughBlocks(this.state.playbackBlocks), 500)
-    //
-    // function start(counter){
-    //   if(counter < 10){
-    //     setTimeout(function(){
-    //       counter++;
-    //       console.log(counter);
-    //       start(counter);
-    //     }, 1000);
-    //   }
-    // }
-    // start(0)
-    this.playThroughBlocks(this.state.playbackBlocks)
-    // setInterval(() => this.playThroughBlocks(this.state.playbackBlocks), 500)
+    // setTimeout(() => this.wait, 500)
+    setInterval(() => this.playThroughBlocks(this.state.playbackBlocks), 500)
   }
 
   wait() {
@@ -55,46 +40,49 @@ class PlayableList extends Component {
 
   createPlaybackBlocks(blocks){
     console.log("PlayableList createPlaybackBlocks")
+
     let songLength = blocks.length
     let playbackBlocks =[]
+    let bpm, timeSig, measure, repeat
 
     for (let i = 0; i < songLength; i++) {
       let block = blocks[i]
-      let bpm = block.tempo
+      function toArray (input) {
+        let array = []
+        for (let i = 1; i <= songLength; ++i) {
+          array.push(i)
+        }
+        return array
+      }
+
+      bpm = block.tempo
+      timeSig = block.time_signature_over
+      measure = block.measures
+      repeat = block.repetitions
+
       let msPerBeat = Math.floor(60000/bpm)
+      let timeSigArray = toArray(timeSig)
+      let measureArray = toArray(measure)
+      let repeatArray = toArray(repeat)
 
       playbackBlocks.push({
         name: block.name,
         color: block.color,
-        repeat: block.repetitions,
-        measure: block.measures,
-        timeSig: block.time_signature_over,
+        repeatArray: repeatArray,
+        measureArray: measureArray,
+        timeSigArray: timeSigArray,
+        repeat: repeat,
+        measure: measure,
+        timeSig: timeSig,
         msPerBeat: msPerBeat
       })
     }
     this.setState({ playbackBlocks: playbackBlocks })
   }
 
-  // this works with start() within playThroughBlocks
-  post(thing){
-    thing += 10
-    console.log(this.state.counter)
-    this.setState({ counter: thing })
-  }
-
-  playback(counter, color){
-    console.log(counter)
-    console.log(color)
-    console.log("state: ", this.state.timeSig)
-    console.log("state: ", this.state.color)
-    this.setState({
-      timeSig: counter,
-      color: color
-    })
-  }
-
   playThroughBlocks(playbackBlocks){
-    console.log("Playback Blocks:")
+    // Variables for playback
+    console.log("Playback Blocks:", playbackBlocks)
     console.log("Start countdown...")
     let pbIndex = this.state.pbIndex
     let rIndex = this.state.rIndex
@@ -102,42 +90,17 @@ class PlayableList extends Component {
     let tsIndex = this.state.tsIndex
     let songLength = this.state.playbackBlocks.length
     let namePB, repeatPB, measurePB, timeSigPB, bpmPB, color
-
-    // // this works with post()
-    // function start(counter, post){
-    //   if(counter < 10){
-    //     setTimeout(function(){
-    //       counter++;
-    //       post(counter)
-    //       console.log(counter);
-    //       start(counter, post);
-    //     }, 1000);
-    //   }
-    // }
-    // start(0, this.post)
-
-    function start(counter, playback, playbackBlocks){
-      if(counter < 9){
-        setTimeout(function(){
-          counter++;
-          playback(counter, playbackBlocks[0].color)
-          start(counter, playback, playbackBlocks);
-        }, 1000);
-      }
-    }
-    start(0, this.playback, playbackBlocks)
-
     while (pbIndex < songLength) {
       let playbackBlock = playbackBlocks[pbIndex]
       namePB = playbackBlock.name
       bpmPB = playbackBlock.msPerBeat
       color = playbackBlock.color
       while (rIndex < playbackBlock.repeat) {
-        repeatPB = rIndex + 1
+        repeatPB = playbackBlock.repeatArray[rIndex]
         while (mIndex < playbackBlock.measure) {
-          measurePB = mIndex + 1
+          measurePB = playbackBlock.measureArray[mIndex]
           while (tsIndex < playbackBlock.timeSig){
-            timeSigPB = tsIndex + 1
+            timeSigPB = playbackBlock.timeSigArray[tsIndex]
             tsIndex++
             if (tsIndex == playbackBlock.timeSig) {
               tsIndex = 0
@@ -156,15 +119,16 @@ class PlayableList extends Component {
             }
             break
           }
+          // mIndex++
           break
         }
+        // rIndex++
         break
       }
+      // pbIndex++
       break
     }
-    // setTimeout(() => {
-    //   console.log(pbIndex, rIndex, mIndex, tsIndex);
-    // }, (bpmPB * 3))
+    console.log(pbIndex, rIndex, mIndex, tsIndex)
     this.setState({
       name: namePB,
       repeat: repeatPB,
@@ -180,6 +144,7 @@ class PlayableList extends Component {
 
   render () {
     console.log("PlayableList render")
+    console.log(this.state.playbackBlocks)
 
     let name = this.state.name
     let repeat = this.state.repeat
