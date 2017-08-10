@@ -9,15 +9,6 @@ class LandingPageContainer extends Component {
   }
 
   render() {
-    let songLink
-    if (true){
-      songLink =
-      <div className="song-tile">
-        <Link to={`/songs`}>
-          <h1 className="text-link">Songs</h1>
-        </Link>
-      </div>
-    }
 
     return(
         <div className="row">
