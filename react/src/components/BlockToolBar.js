@@ -33,12 +33,33 @@ class BlockToolBar extends Component {
   }
 
   handleClick(event) {
-    // edit this to toggle playback & tools button
     event.preventDefault()
-    if (this.state.toolsClicked) {
-      this.setState({ toolsClicked: false })
-    } else {
-      this.setState({ toolsClicked: true })
+    let button = event.target.value
+    if (button == "Tools" || button == "Done") {
+      if (this.state.toolsClicked) {
+        this.setState({
+          toolsClicked: false,
+          playbackClicked: false
+        })
+      } else {
+        this.setState({
+          toolsClicked: true,
+          playbackClicked: false
+        })
+      }
+    }
+    if (button == "Play" || button == "End") {
+      if (this.state.toolsClicked) {
+        this.setState({
+          toolsClicked: false,
+          playbackClicked: false
+        })
+      } else {
+        this.setState({
+          toolsClicked: false,
+          playbackClicked: true
+        })
+      }
     }
   }
 
@@ -319,7 +340,13 @@ class BlockToolBar extends Component {
             value="Delete"
           >Delete
           </button>
-          <span className="label-text">    Use this form to {toggleLabel} blocks</span>
+          {/* <span className="label-text">    Use this form to {toggleLabel} blocks</span> */}
+          <button
+            className="button tool-text right"
+            onClick={this.handleClick}
+            value="Play"
+            >Play
+          </button>
         </div>
         <form className="new-form callout" onSubmit={this.handleFormSubmit}>
           <div className="row">
@@ -361,6 +388,12 @@ class BlockToolBar extends Component {
           onClick={this.handleClick}
           value="Tools"
         >Tools
+        </button>
+        <button
+          className="button tool-text right"
+          onClick={this.handleClick}
+          value="Play"
+        >Play
         </button>
       </div>
     }
