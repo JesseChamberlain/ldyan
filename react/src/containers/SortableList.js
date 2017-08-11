@@ -13,9 +13,9 @@ const SortableList = SortableContainer(({blocks}) => {
   ))
 
   return (
-    <ul>
+    <div>
       {sortedBlocks}
-    </ul>
+    </div>
   );
 });
 

@@ -84,24 +84,28 @@ class SongShowContainer extends Component {
   }
 
   render() {
-    console.log("SongShowContainer render")
-    console.log(this.state.blocks)
+    let currentList
     let playableList
-    if (this.state.blocks.length > 0) {
-      playableList = <PlayableList
+    let sortableVertList =
+      <SortableList
         blocks={this.state.blocks}
+        onSortEnd={this.onSortEnd}
       />
+
+    if (this.state.blocks.length > 0) {
+      playableList =
+        <PlayableList
+          blocks={this.state.blocks}
+        />
     }
+
     return(
       <div className="row">
         <div className="small-11 small-centered medium-9 medium-centered columns">
           <br/><br/><br/><br/><br/>
           {playableList}
           <br/>
-          <SortableList
-            blocks={this.state.blocks}
-            onSortEnd={this.onSortEnd}
-          />
+          {sortableVertList}
         </div>
       </div>
     )

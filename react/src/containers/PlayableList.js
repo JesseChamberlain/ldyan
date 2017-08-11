@@ -20,7 +20,6 @@ class PlayableList extends Component {
   }
 
   componentWillMount(){
-    console.log("PlayableList will mount")
     let blocks = this.props.blocks
     if (blocks.length > 0) {
       this.createPlaybackBlocks(blocks)
@@ -28,12 +27,10 @@ class PlayableList extends Component {
   }
 
   componentDidMount(){
-    console.log("PlayableList did mount")
     this.playThroughBlocks(this.state.playbackBlocks)
   }
 
   createPlaybackBlocks(blocks){
-    console.log("PlayableList createPlaybackBlocks")
     let songLength = blocks.length
     let playbackBlocks =[]
 
@@ -54,37 +51,8 @@ class PlayableList extends Component {
     this.setState({ playbackBlocks: playbackBlocks })
   }
 
-  playback(counter, color){
-    this.setState({
-      timeSig: counter,
-      color: color
-    })
-  }
-
-  playThroughBlocks(playbackBlocks){
-    console.log("Playback Blocks:")
-    console.log("Start countdown...")
-
-    // This timeout works with playback() and sets State
-    function start(counter, playback, playbackBlocks){
-      // calculates total beats within song
-      let beats = 0
-      playbackBlocks.forEach((block) => {
-        beats += (block.measure * (block.repeat * block.timeSig))
-      });
-
-      // Timeout looper
-      if(counter < beats){
-        setTimeout(() => {
-          counter++;
-          playback(counter, playbackBlocks[0].color)
-          start(counter, playback, playbackBlocks);
-        }, 1000);
-      }
-    }
-    start(0, this.playback, playbackBlocks)
-
-    // Looper to send N/R/M/TS to state
+  // Looper to send N/R/M/TS to state
+  playback(playbackBlocks){
     let pbIndex = this.state.pbIndex
     let rIndex = this.state.rIndex
     let mIndex = this.state.mIndex
@@ -138,23 +106,51 @@ class PlayableList extends Component {
       mIndex: mIndex,
       tsIndex: tsIndex
     })
+    return bpmPB
+  }
+
+  playThroughBlocks(playbackBlocks){
+    // calculates total beats within song
+    let beats = 0
+    playbackBlocks.forEach((block) => {
+      beats += (block.measure * (block.repeat * block.timeSig))
+    });
+
+    // This timeout works with playback() and sets State
+    let bpm = playbackBlocks[0].msPerBeat
+    function start(counter, playback, playbackBlocks, bpm){
+      if(counter < beats){
+        setTimeout(() => {
+          counter++;
+          bpm = playback(playbackBlocks)
+          start(counter, playback, playbackBlocks, bpm);
+        }, bpm);
+      }
+    }
+    start(0, this.playback, playbackBlocks, bpm)
   }
 
   render () {
-    console.log("PlayableList render")
-
     let name = this.state.name
     let repeat = this.state.repeat
     let measure = this.state.measure
     let timeSig = this.state.timeSig
     let color = this.state.color
 
-    let output = `Playback: N:${name} R:${repeat} M:${measure} TS:${timeSig}`
     return(
-      <div>
-        <span className={`block-tile-${color}`}>
-          {output}
-        </span>
+      <div className="block-tile row">
+        <div className={`block-tile-${color} small-4 columns`}>
+          <p id="block-playback">R: {repeat}</p>
+        </div>
+        <div className={`block-tile-${color} small-4 columns`}>
+          <p id="block-playback">M: {measure}</p>
+        </div>
+        <div className={`block-tile-${color} small-4 columns`}>
+          <p id="block-playback">T: {timeSig}</p>
+        </div>
+        <div className={`block-tile-${color} small-12 columns`}>
+          <span id="block-name">{name}</span>
+        </div>
       </div>
     )
   }
