@@ -3,11 +3,11 @@ $red    : #FF6200;
 $green  : #B5F700;
 $pink   : #DB0099;
 $blue   : #00CB9D;
-$snow   : #909B98;
+$smoke   : #EEEEEE;
 
 .tool-bar {
   background-color: rgba(34, 34, 34, 0.8);
-  color: $snow;
+  color: $smoke;
   padding: 2px;
 }
 
@@ -20,5 +20,5 @@ $snow   : #909B98;
 }
 
 .label-text {
-  color: $snow;
+  color: $smoke;
 }

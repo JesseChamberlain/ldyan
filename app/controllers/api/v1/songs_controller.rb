@@ -13,6 +13,7 @@ class Api::V1::SongsController < ApplicationController
     song = Song.find(params[:id])
     blocks = song.blocks
     sorted_blocks = blocks.sort_by{|b| b["location"]}
+    # blocks = blocks.order(location: :asc)
     render json: {song: song, blocks: sorted_blocks}
   end
 

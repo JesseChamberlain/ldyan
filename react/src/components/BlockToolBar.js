@@ -20,7 +20,8 @@ class BlockToolBar extends Component {
         location: '',
         tempo: ''
       },
-      clicked: false,
+      toolsClicked: false,
+      playbackClicked: false,
       newEditDelete: "New",
       errors: {}
     }
@@ -29,15 +30,41 @@ class BlockToolBar extends Component {
     this.handleBlockChange = this.handleBlockChange.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.clearForm = this.clearForm.bind(this)
   }
 
   handleClick(event) {
     event.preventDefault()
-    if (this.state.clicked) {
-      this.setState({ clicked: false })
-    } else {
-      this.setState({ clicked: true })
+    let button = event.target.value
+    if (button == "Tools" || button == "Done") {
+      if (this.state.toolsClicked) {
+        this.setState({
+          toolsClicked: false,
+          playbackClicked: false
+        })
+      } else {
+        this.setState({
+          toolsClicked: true,
+          playbackClicked: false
+        })
+      }
     }
+    if (button == "Play" || button == "End") {
+      if (this.state.playbackClicked) {
+        this.setState({
+          toolsClicked: false,
+          playbackClicked: false
+        })
+      } else {
+        this.setState({
+          toolsClicked: false,
+          playbackClicked: true
+        })
+      }
+    }
+  }
+
+  handlePlaybackChange(event) {
   }
 
   handleNEDToggleChange(event) {
@@ -211,7 +238,6 @@ class BlockToolBar extends Component {
     })
   }
 
-  // Modify for App
   handleFormSubmit(event) {
     let block = this.state.blockSelected
     let location = this.state.blocks.length + 1
@@ -282,7 +308,7 @@ class BlockToolBar extends Component {
     }
 
     // Defines On/Off for 'Tools' button
-    if (this.state.clicked) {
+    if (this.state.toolsClicked) {
       let blockSelector
       let blocks = this.state.blocks
       blockSelector = blocks.map(block => {
@@ -296,6 +322,7 @@ class BlockToolBar extends Component {
           <button
             className="button tool-text"
             onClick={this.handleClick}
+            value="Done"
           >Done
           </button>
           <button
@@ -316,7 +343,13 @@ class BlockToolBar extends Component {
             value="Delete"
           >Delete
           </button>
-          <span className="label-text">    Use this form to {toggleLabel} blocks</span>
+          {/* <span className="label-text">    Use this form to {toggleLabel} blocks</span> */}
+          <button
+            className="button tool-text right"
+            onClick={this.handleClick}
+            value="Play"
+            >Play
+          </button>
         </div>
         <form className="new-form callout" onSubmit={this.handleFormSubmit}>
           <div className="row">
@@ -350,10 +383,57 @@ class BlockToolBar extends Component {
           </div>
         </form>
       </div>
+    } else if (this.state.playbackClicked) {
+      tools =
+      <div className="tool-bar">
+        <div className="tools-button tool-text">
+          <button
+            className="button tool-text"
+            onClick={this.handleClick}
+            value="Tools"
+          >Tools
+          </button>
+          <button
+            className="button tool-text right"
+            onClick={this.handleClick}
+            value="End"
+          >End
+          </button>
+          <button
+            className="button tool-text right"
+            onClick={this.props.handleToolsPlay}
+            value="Stop"
+          >Stop
+          </button>
+          <button
+            className="button tool-text right"
+            onClick={this.handlePlaybackChange}
+            value="Pause"
+          >Pause
+          </button>
+          <button
+            className="button tool-text right"
+            onClick={this.props.handleToolsPlay}
+            value="Play"
+          >Play
+          </button>
+        </div>
+      </div>
     } else {
       tools =
       <div className="tools-button">
-        <button className="button tool-text" onClick={this.handleClick}>Tools</button>
+        <button
+          className="button tool-text"
+          onClick={this.handleClick}
+          value="Tools"
+        >Tools
+        </button>
+        <button
+          className="button tool-text right"
+          onClick={this.handleClick}
+          value="Play"
+        >Play
+        </button>
       </div>
     }
 
