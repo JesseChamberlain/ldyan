@@ -21,6 +21,7 @@ class SongToolBar extends Component {
     this.handleSongChange = this.handleSongChange.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.clearForm = this.clearForm.bind(this)
   }
 
   handleClick(event) {
@@ -262,7 +263,7 @@ class SongToolBar extends Component {
             value="Delete"
           >Delete
           </button>
-          <span className="label-text">    Use this form to {toggleLabel} songs</span>
+          {/* <span className="label-text">    Use this form to {toggleLabel} songs</span> */}
         </div>
         <form className="new-form callout" onSubmit={this.handleFormSubmit}>
           <div className="row">

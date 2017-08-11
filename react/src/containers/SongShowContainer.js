@@ -105,8 +105,11 @@ class SongShowContainer extends Component {
     let sortableHorzList
 
     sortableVertList =
-    <div className="small-11 small-centered medium-9 medium-centered columns">
-      <br/><br/><br/><br/><br/>
+    <div className="small-9 small-centered medium-9 medium-centered large-11 large-centered columns">
+      <br/><br/><br/>
+      <h1 className="title-show">{this.state.song.name}</h1>
+      <hr/>
+      <br/>
       <SortableList
         blocks={this.state.blocks}
         onSortEnd={this.onSortEnd}
@@ -115,7 +118,7 @@ class SongShowContainer extends Component {
 
     if (this.state.blocks.length > 0) {
       playableList =
-      <div className="small-11 small-centered medium-10 medium-centered columns">
+      <div className="small-11 small-centered columns">
         <br/><br/><br/><br/><br/><br/><br/>
         <PlayableList
           blocks={this.state.blocks}

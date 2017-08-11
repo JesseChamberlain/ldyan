@@ -30,6 +30,7 @@ class BlockToolBar extends Component {
     this.handleBlockChange = this.handleBlockChange.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.clearForm = this.clearForm.bind(this)
   }
 
   handleClick(event) {
@@ -64,9 +65,6 @@ class BlockToolBar extends Component {
   }
 
   handlePlaybackChange(event) {
-    let value = event.target.value
-    console.log("handlePlaybackChange")
-    // this.props.handleToolsPlay()
   }
 
   handleNEDToggleChange(event) {
@@ -240,7 +238,6 @@ class BlockToolBar extends Component {
     })
   }
 
-  // Modify for App
   handleFormSubmit(event) {
     let block = this.state.blockSelected
     let location = this.state.blocks.length + 1
