@@ -5,11 +5,11 @@ class PlayableList extends Component {
     super(props);
     this.state = {
       playbackBlocks: [],
-      name: '',
-      repeat: '',
-      measure: '',
-      timeSig: '',
-      color: '',
+      name: 'Start',
+      repeat: 0,
+      measure: 0,
+      timeSig: 0,
+      color: 'green',
       pbIndex: 0,
       rIndex: 0,
       mIndex: 0,

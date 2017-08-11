@@ -10,10 +10,12 @@ class SongShowContainer extends Component {
     super(props);
     this.state = {
       song: {},
-      blocks: []
+      blocks: [],
+      currentList: "vert"
     }
     this.onSortEnd = this.onSortEnd.bind(this);
     this.updateSongBlocks = this.updateSongBlocks.bind(this);
+    this.handleToolsPlayToggle = this.handleToolsPlayToggle.bind(this);
   }
 
   // Fetch initial blocks
@@ -41,12 +43,24 @@ class SongShowContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
+  //
+  handleToolsPlayToggle(event){
+    let selected = event.target.value
+    console.log(selected)
+    if (selected == "Play") {
+      this.setState({ currentList: "play" })
+    } else if (selected == "Stop") {
+      this.setState({ currentList: "vert" })
+    }
+  }
+
   // Render ToolBar after Fetch
   componentDidUpdate() {
     ReactDOM.render(
       <BlockToolBar
         song={this.state.song}
         blocks={this.state.blocks}
+        handleToolsPlay={this.handleToolsPlayToggle}
       />,
       document.getElementById('tool-bar')
     )
@@ -84,29 +98,42 @@ class SongShowContainer extends Component {
   }
 
   render() {
+    let selected = this.state.currentList
     let currentList
     let playableList
-    let sortableVertList =
+    let sortableVertList
+    let sortableHorzList
+
+    sortableVertList =
+    <div className="small-11 small-centered medium-9 medium-centered columns">
+      <br/><br/><br/><br/><br/>
       <SortableList
         blocks={this.state.blocks}
         onSortEnd={this.onSortEnd}
       />
+    </div>
 
     if (this.state.blocks.length > 0) {
       playableList =
+      <div className="small-11 small-centered medium-10 medium-centered columns">
+        <br/><br/><br/><br/><br/><br/><br/>
         <PlayableList
           blocks={this.state.blocks}
         />
+      </div>
+    }
+
+    if (selected == "vert") {
+      currentList = sortableVertList
+    } else if (selected == "horz") {
+      currentList = sortableHorzList
+    } else if (selected == "play") {
+      currentList = playableList
     }
 
     return(
       <div className="row">
-        <div className="small-11 small-centered medium-9 medium-centered columns">
-          <br/><br/><br/><br/><br/>
-          {playableList}
-          <br/>
-          {sortableVertList}
-        </div>
+        {currentList}
       </div>
     )
   }

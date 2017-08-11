@@ -49,7 +49,7 @@ class BlockToolBar extends Component {
       }
     }
     if (button == "Play" || button == "End") {
-      if (this.state.toolsClicked) {
+      if (this.state.playbackClicked) {
         this.setState({
           toolsClicked: false,
           playbackClicked: false
@@ -61,6 +61,12 @@ class BlockToolBar extends Component {
         })
       }
     }
+  }
+
+  handlePlaybackChange(event) {
+    let value = event.target.value
+    console.log("handlePlaybackChange")
+    // this.props.handleToolsPlay()
   }
 
   handleNEDToggleChange(event) {
@@ -379,6 +385,42 @@ class BlockToolBar extends Component {
             </div>
           </div>
         </form>
+      </div>
+    } else if (this.state.playbackClicked) {
+      tools =
+      <div className="tool-bar">
+        <div className="tools-button tool-text">
+          <button
+            className="button tool-text"
+            onClick={this.handleClick}
+            value="Tools"
+          >Tools
+          </button>
+          <button
+            className="button tool-text right"
+            onClick={this.handleClick}
+            value="End"
+          >End
+          </button>
+          <button
+            className="button tool-text right"
+            onClick={this.props.handleToolsPlay}
+            value="Stop"
+          >Stop
+          </button>
+          <button
+            className="button tool-text right"
+            onClick={this.handlePlaybackChange}
+            value="Pause"
+          >Pause
+          </button>
+          <button
+            className="button tool-text right"
+            onClick={this.props.handleToolsPlay}
+            value="Play"
+          >Play
+          </button>
+        </div>
       </div>
     } else {
       tools =
