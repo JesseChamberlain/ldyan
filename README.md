@@ -25,6 +25,7 @@ The front end is built completely with React.js and utilizes React Router for a 
 * Node, 7.9.0
 
 ## Setup
+
 To get started, clone and run the following in your terminal:
 ```
 bundle install
