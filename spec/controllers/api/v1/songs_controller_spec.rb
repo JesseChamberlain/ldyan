@@ -4,7 +4,7 @@ RSpec.describe Api::V1::SongsController, type: :controller do
   let!(:first_song) {FactoryGirl.create(:song)}
   let!(:second_song) {FactoryGirl.create(:song)}
 
-  describe "GET#index" do
+  xdescribe "GET#index" do
     it "should return details about a song" do
       get :index
       returned_json = JSON.parse(response.body)
@@ -26,7 +26,7 @@ RSpec.describe Api::V1::SongsController, type: :controller do
     end
   end
 
-  describe "GET#show" do
+  xdescribe "GET#show" do
     it "should return details about a song" do
       get :show, params: {id: first_song.id}
       returned_json = JSON.parse(response.body)
