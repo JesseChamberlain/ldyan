@@ -6,7 +6,7 @@ feature 'sign up' , %Q{
     So that I can contribute to and modify songs
   } do
 
-  xscenario 'specifying valid and required information' do
+  scenario 'specifying valid and required information' do
     visit root_path
     click_link 'Sign Up'
     fill_in 'First Name', with: 'Jon'
@@ -30,7 +30,7 @@ feature 'sign up' , %Q{
 
   end
 
-  xscenario 'password confirmation does not match confirmation' do
+  scenario 'password confirmation does not match confirmation' do
     visit root_path
     click_link 'Sign Up'
 

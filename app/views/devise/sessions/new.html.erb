@@ -9,12 +9,12 @@
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="label-text field">
-        <label><span class="label-text">Email</span></label>
+        <%= f.label :email, 'Email', :class => "label-text"%>
         <%= f.email_field :email, autofocus: true %>
       </div>
 
       <div class="label-text field">
-        <label><span class="label-text">Password</span></label>
+        <%= f.label :password, 'Password', :class => "label-text"%>
         <%= f.password_field :password, autocomplete: "off" %>
       </div>
 
