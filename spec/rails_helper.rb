@@ -60,5 +60,9 @@ require "capybara/rails"
 require "valid_attribute"
 
 RSpec.configure do |config|
-    config.include FactoryGirl::Syntax::Methods
+  config.include FactoryGirl::Syntax::Methods
+end
+
+RSpec.configure do |config|
+  config.include Devise::Test::ControllerHelpers, type: :controller
 end

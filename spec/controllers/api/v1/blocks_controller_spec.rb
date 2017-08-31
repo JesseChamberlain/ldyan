@@ -1,11 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::BlocksController, type: :controller do
+  before :each do
+    @user = FactoryGirl.create(:user)
+    sign_in @user
+  end
   let!(:first_song) {FactoryGirl.create(:song)}
   let!(:first_block) {FactoryGirl.create(:block, song_id: first_song.id)}
   let!(:second_block) {FactoryGirl.create(:block, song_id: first_song.id, color: "yellow")}
 
-  xdescribe "GET#index" do
+  describe "GET#index" do
     it "should return details about a song blocks for first_song" do
       get :index, params: {song_id: first_block.song_id}
       returned_json = JSON.parse(response.body)
@@ -26,6 +30,8 @@ RSpec.describe Api::V1::BlocksController, type: :controller do
       expect(block_1["musical_key"]).to eq first_block.musical_key
       expect(block_1["song_id"]).to eq first_block.song_id
       expect(block_1["color"]).to eq first_block.color
+      expect(block_1["location"]).to eq first_block.location
+      expect(block_1["tempo"]).to eq first_block.tempo
 
       expect(block_2["id"]).to eq second_block.id
       expect(block_2["name"]).to eq second_block.name
@@ -36,6 +42,8 @@ RSpec.describe Api::V1::BlocksController, type: :controller do
       expect(block_2["musical_key"]).to eq second_block.musical_key
       expect(block_2["song_id"]).to eq second_block.song_id
       expect(block_2["color"]).to eq second_block.color
+      expect(block_2["location"]).to eq second_block.location
+      expect(block_2["tempo"]).to eq second_block.tempo
     end
   end
 end

@@ -1,10 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::SongsController, type: :controller do
+  before :each do
+    @user = FactoryGirl.create(:user)
+    sign_in @user
+  end
   let!(:first_song) {FactoryGirl.create(:song)}
   let!(:second_song) {FactoryGirl.create(:song)}
 
-  xdescribe "GET#index" do
+  describe "GET#index" do
     it "should return details about a song" do
       get :index
       returned_json = JSON.parse(response.body)
@@ -26,7 +30,7 @@ RSpec.describe Api::V1::SongsController, type: :controller do
     end
   end
 
-  xdescribe "GET#show" do
+  describe "GET#show" do
     it "should return details about a song" do
       get :show, params: {id: first_song.id}
       returned_json = JSON.parse(response.body)

@@ -6,7 +6,7 @@ feature 'user signs in', %Q{
   So that I can update and view songs
 } do
 
-  xscenario 'an existing user specifies a valid email and password' do
+  scenario 'an existing user specifies a valid email and password' do
     user = FactoryGirl.create(:user)
     visit root_path
     click_link 'Sign In'
@@ -16,7 +16,7 @@ feature 'user signs in', %Q{
 
     expect(page).to have_content('Sign Out')
   end
-  xscenario 'a nonexistant email and password is supplied' do
+  scenario 'a nonexistant email and password is supplied' do
     visit root_path
     click_link 'Sign In'
     fill_in 'Email', with: 'nobody@example.com'
@@ -26,7 +26,7 @@ feature 'user signs in', %Q{
     expect(page).to have_content('Invalid Email or password.')
     expect(page).to_not have_content('Sign Out')
   end
-  xscenario 'a exisiting email with the wrong password is denied access' do
+  scenario 'a exisiting email with the wrong password is denied access' do
     user = FactoryGirl.create(:user)
     visit root_path
     click_link 'Sign In'
@@ -37,7 +37,7 @@ feature 'user signs in', %Q{
     expect(page).to have_content('Invalid Email or password.')
     expect(page).to_not have_content('Sign Out')
   end
-  xscenario 'an already authenticated user cannont re-sign in' do
+  scenario 'an already authenticated user cannont re-sign in' do
     user = FactoryGirl.create(:user)
     visit new_user_session_path
     fill_in 'Email', with: user.email
@@ -49,6 +49,7 @@ feature 'user signs in', %Q{
 
     visit new_user_session_path
 
-    expect(page).to have_content('You are already signed in.')
+    expect(page).to have_content('Sign Out')
+    expect(page).to_not have_content('Sign In')
   end
 end

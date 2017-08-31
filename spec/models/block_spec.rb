@@ -26,7 +26,7 @@ RSpec.describe Block, type: :model do
   it { should_not have_valid(:time_signature_over).when(-1, 0, 17) }
 
   it { should have_valid(:time_signature_under).when(nil, "") }
-  it { should have_valid(:time_signature_under).when(2, 4, 16) }
+  it { should have_valid(:time_signature_under).when(2, 4, 8, 16) }
   it { should_not have_valid(:time_signature_under).when(3, 7) }
   it { should_not have_valid(:time_signature_under).when(5.6) }
   it { should_not have_valid(:time_signature_under).when("twenty") }
