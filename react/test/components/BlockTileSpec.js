@@ -1,11 +1,13 @@
-import BlockTile from '../../src/components/BlockTile';
+import SortableList from '../../src/containers/SortableList';
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
+import {spy} from 'sinon';
 
 // React Sortable broke this test.
+
 xdescribe('BlockTile', () => {
   let wrapper
-  let index = 1
-  let block =
+  let spy = sinon.spy()
+  let blocks =
   {
     id: 1,
     name: "A1",
@@ -20,7 +22,10 @@ xdescribe('BlockTile', () => {
 
   beforeEach(() => {
     wrapper = mount(
-      <BlockTile index={index} block= {block}/>
+      <SortableList
+        blocks={blocks}
+        onSortEnd={spy}
+      />
     )
   });
 
