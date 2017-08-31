@@ -7,5 +7,7 @@ class BlockSerializer < ActiveModel::Serializer
     :time_signature_under,
     :musical_key,
     :song_id,
-    :color
+    :color,
+    :location,
+    :tempo
 end
