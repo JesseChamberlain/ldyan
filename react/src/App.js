@@ -9,6 +9,7 @@ const App = (props) => {
     <Router>
       <div>
         <Route exact path="/" render={()=><LandingPageContainer userId={props.userId}/>}/>
+        <Route exact path="/about" component={SongsIndexContainer}/>
         <Route exact path="/songs" component={SongsIndexContainer}/>
         <Route exact path="/songs/:id" component={SongShowContainer}/>
       </div>

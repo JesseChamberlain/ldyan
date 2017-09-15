@@ -9,21 +9,18 @@ class LandingPageContainer extends Component {
   }
 
   render() {
-    debugger
-    let landingLink = <Link to={`/about`}>
-      <h1 className="text-link">Learn More</h1>
-    </Link>
+    let landingLink
 
-    // if () {
-    //   <Link to={`/about`}>
-    //     <h1 className="text-link">Learn More</h1>
-    //   </Link>
-    // } else {
-    //   <Link to={`/songs`}>
-    //     <h1 className="text-link">Songs</h1>
-    //   </Link>
-    // }
-
+    // Toggle between About and Songs pages depending on sign in status
+    if (this.props.userId == "") {
+      landingLink = <Link to={`/about`}>
+        <h1 className="text-link">Learn More</h1>
+      </Link>
+    } else {
+      landingLink = <Link to={`/songs`}>
+        <h1 className="text-link">Songs</h1>
+      </Link>
+    }
 
     return(
         <div className="row">
