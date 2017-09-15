@@ -6,7 +6,6 @@ import App from './App'
 $(function() {
 
   let appDiv = document.getElementById('app')
-  debugger
   let userId = appDiv.dataset.user_id
 
   ReactDOM.render(
