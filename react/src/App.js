@@ -4,11 +4,11 @@ import LandingPageContainer from './containers/LandingPageContainer';
 import SongsIndexContainer from './containers/SongsIndexContainer';
 import SongShowContainer from './containers/SongShowContainer';
 
-const App = () => {
+const App = (props) => {
   return (
     <Router>
       <div>
-        <Route exact path="/" component={LandingPageContainer}/>
+        <Route exact path="/" render={()=><LandingPageContainer userId={props.userId}/>}/>
         <Route exact path="/songs" component={SongsIndexContainer}/>
         <Route exact path="/songs/:id" component={SongShowContainer}/>
       </div>
