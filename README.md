@@ -7,9 +7,18 @@ This repository contains the source code for the web application Ldyan (lid-ee-u
 
 Ldyan is a collaborative music white-boarding app for communicating song structures without musical notation or recorded audio. Users can create songs, and add structure blocks to build out the songs. The blocks can also be configured to playback in real time, providing visual cues to the song structure.
 
-## Live Demo
+## Demo
 
 http://ldyan.herokuapp.com
+
+#### Drag & Drop functionality
+![](/images/Ldyan_demo_drag.gif)
+
+#### Advanced stateful react forms
+![](/images/Ldyan_demo_form.gif)
+
+#### Dynamic virtual playback
+![](/images/Ldyan_demo_playback.gif)
 
 ## Technology
 
