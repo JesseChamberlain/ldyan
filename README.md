@@ -12,13 +12,13 @@ Ldyan is a collaborative music white-boarding app for communicating song structu
 http://ldyan.herokuapp.com
 
 #### Drag & Drop functionality
-![](/images/Ldyan_demo_drag.gif)
+![](/media/images/Ldyan_demo_drag.gif)
 
 #### Advanced stateful react forms
-![](/images/Ldyan_demo_form.gif)
+![](/media/images/Ldyan_demo_form.gif)
 
 #### Dynamic virtual playback
-![](/images/Ldyan_demo_playback.gif)
+![](/media/images/Ldyan_demo_playback.gif)
 
 ## Technology
 
