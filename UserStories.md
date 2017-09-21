@@ -1,7 +1,15 @@
 # User Stories
 
 ## Core
-### Remaining
+### Finished
+```no-highlight
+As an unauthenticated band member
+I want to learn what Ldyan does
+So that I can decide if I want to make an account
+```
+Acceptance Criteria
+- I should be able to visit the home page.
+- I should see a "Learn More" link to an about page .
 
 ```no-highlight
 As an unauthenticated band member
@@ -22,8 +30,6 @@ Acceptance Criteria
 - I should be able to visit the home page.
 - I should be presented with a small form to log in with my username and password.
 
-
-### Finished
 ```no-highlight
 As a band member
 I want to see a list of current songs

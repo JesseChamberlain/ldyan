@@ -35,8 +35,10 @@ The front end is built completely with React.js and utilizes React Router for a 
 ### Libraries & Gems
 * React Router, 4.1.2
 * React Sortable HOC, 0.6.6
+* Video.js, 6.2.7
 * Devise
 * Serializer
+
 
 ### Testing
 * Jasmine & Enzyme
