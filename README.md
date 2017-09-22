@@ -12,13 +12,13 @@ Ldyan is a collaborative music white-boarding app for communicating song structu
 http://ldyan.herokuapp.com
 
 #### Drag & Drop functionality
-![](/images/Ldyan_demo_drag.gif)
+![](/media/images/Ldyan_demo_drag.gif)
 
 #### Advanced stateful react forms
-![](/images/Ldyan_demo_form.gif)
+![](/media/images/Ldyan_demo_form.gif)
 
 #### Dynamic virtual playback
-![](/images/Ldyan_demo_playback.gif)
+![](/media/images/Ldyan_demo_playback.gif)
 
 ## Technology
 
@@ -35,8 +35,10 @@ The front end is built completely with React.js and utilizes React Router for a 
 ### Libraries & Gems
 * React Router, 4.1.2
 * React Sortable HOC, 0.6.6
+* Video.js, 6.2.7
 * Devise
 * Serializer
+
 
 ### Testing
 * Jasmine & Enzyme
