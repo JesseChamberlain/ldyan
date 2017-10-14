@@ -9,14 +9,39 @@ class AboutPageContainer extends Component {
   }
 
   render() {
-    const videoJsOptions = {
-      autoplay: false,
-      controls: true,
-      sources: [{
-        src: '/media/videos/Ldyan_demo_dnd.mp4',
-        type: 'video/mp4'
-      }]
-    }
+    // const videoJsOptions = {
+    //   autoplay: false,
+    //   controls: true,
+    //   sources: [{
+    //     src: '/media/videos/Ldyan_demo_dnd.mp4',
+    //     type: 'video/mp4'
+    //   }]
+    // }
+
+    let videos
+    let videoLinks = [
+      {
+        title: 'Drag & Drop functionality',
+        link: 'https://www.youtube.com/embed/ziuW9Bh0rcM?rel=0'
+      },
+      {
+        title: 'Custom stateful forms',
+        link: 'https://www.youtube.com/embed/lkHg4fdCsxI?rel=0'
+      },
+      {
+        title: 'Virtual conducter playback',
+        link: 'https://www.youtube.com/embed/NWfu3H8KXM8?rel=0'
+      }
+    ]
+
+    videos = videoLinks.map((value, index) => (
+      <div className="small-11 small-centered medium-9 medium-centered columns">
+        <h1 className="title-show">{value.title}</h1>
+        <hr/>
+        <iframe width="720" height="405" src={`${value.link}`} frameBorder="0" allowFullScreen></iframe>
+        <br/><br/>
+      </div>
+    ))
 
     return(
       <div className="row">
@@ -29,24 +54,7 @@ class AboutPageContainer extends Component {
           </div>
           <br/><br/>
         </div>
-        <div className="small-11 small-centered medium-9 medium-centered columns">
-          <h1 className="title-show">Drag & Drop functionality</h1>
-          <hr/>
-          <iframe width="720" height="405" src="https://www.youtube.com/embed/ziuW9Bh0rcM?rel=0" frameBorder="0" allowFullScreen></iframe>
-          <br/><br/>
-        </div>
-        <div className="small-11 small-centered medium-9 medium-centered columns">
-          <h1 className="title-show">Custom stateful forms</h1>
-          <hr/>
-          <iframe width="720" height="405" src="https://www.youtube.com/embed/lkHg4fdCsxI?rel=0" frameBorder="0" allowFullScreen></iframe>
-          <br/><br/>
-        </div>
-        <div className="small-11 small-centered medium-9 medium-centered columns">
-          <h1 className="title-show">Virtual conducter playback</h1>
-          <hr/>
-          <iframe width="720" height="405" src="https://www.youtube.com/embed/NWfu3H8KXM8?rel=0" frameBorder="0" allowFullScreen></iframe>
-          <br/><br/>
-        </div>
+        {videos}
         {/* <div className="small-11 small-centered medium-9 medium-centered columns">
           <VideoPlayer { ...videoJsOptions } />
           <video id="my-video" class="video-js" controls preload="auto" width="640" height="264" data-setup="{}">
