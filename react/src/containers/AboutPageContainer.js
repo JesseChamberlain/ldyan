@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import VideoTile from '../components/VideoTile';
-import VideoPlayer from '../components/VideoPlayer';
 
 class AboutPageContainer extends Component {
   constructor(props) {
