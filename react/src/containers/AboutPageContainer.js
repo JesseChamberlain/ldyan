@@ -1,47 +1,40 @@
 import React, { Component } from 'react';
+import VideoTile from '../components/VideoTile';
 import VideoPlayer from '../components/VideoPlayer';
 
 class AboutPageContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      videoLinks: [
+        {
+          id: 1,
+          title: 'Drag & Drop functionality',
+          link: 'https://www.youtube.com/embed/ziuW9Bh0rcM?rel=0'
+        },
+        {
+          id: 2,
+          title: 'Custom stateful forms',
+          link: 'https://www.youtube.com/embed/lkHg4fdCsxI?rel=0'
+        },
+        {
+          id: 3,
+          title: 'Virtual conducter playback',
+          link: 'https://www.youtube.com/embed/NWfu3H8KXM8?rel=0'
+        }
+      ]
     }
   }
 
   render() {
-    // const videoJsOptions = {
-    //   autoplay: false,
-    //   controls: true,
-    //   sources: [{
-    //     src: '/media/videos/Ldyan_demo_dnd.mp4',
-    //     type: 'video/mp4'
-    //   }]
-    // }
-
-    let videos
-    let videoLinks = [
-      {
-        title: 'Drag & Drop functionality',
-        link: 'https://www.youtube.com/embed/ziuW9Bh0rcM?rel=0'
-      },
-      {
-        title: 'Custom stateful forms',
-        link: 'https://www.youtube.com/embed/lkHg4fdCsxI?rel=0'
-      },
-      {
-        title: 'Virtual conducter playback',
-        link: 'https://www.youtube.com/embed/NWfu3H8KXM8?rel=0'
-      }
-    ]
-
-    videos = videoLinks.map((value, index) => (
-      <div className="small-11 small-centered medium-9 medium-centered columns">
-        <h1 className="title-show">{value.title}</h1>
-        <hr/>
-        <iframe width="720" height="405" src={`${value.link}`} frameBorder="0" allowFullScreen></iframe>
-        <br/><br/>
-      </div>
-    ))
+    let videos = this.state.videoLinks.map(video => {
+      return(
+        <VideoTile
+          key={video.id}
+          video={video}
+        />
+      )
+    })
 
     return(
       <div className="row">
