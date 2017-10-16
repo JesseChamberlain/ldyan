@@ -21,7 +21,8 @@ class AboutPageContainer extends Component {
           title: 'Virtual conducter playback',
           link: 'https://www.youtube.com/embed/NWfu3H8KXM8?rel=0'
         }
-      ]
+      ],
+      description: 'Ldyan is a white-boarding app for song structures. Describe sections of the song using colored blocks.  These blocks can simply have names and measures, or they can include granular details about time signature, tempo and other metrics. To contribute, or learn more about the codebase, visit '
     }
   }
 
@@ -46,14 +47,14 @@ class AboutPageContainer extends Component {
           </div>
           <br/><br/>
         </div>
+        <div className="small-11 small-centered medium-9 medium-centered columns">
+          <div>
+            <span className="description">{this.state.description}</span>
+            <a className="text-link" target="_blank" href="https://github.com/JesseChamberlain/ldyan">GitHub.</a>
+          </div>
+          <br/><br/>
+        </div>
         {videos}
-        {/* <div className="small-11 small-centered medium-9 medium-centered columns">
-          <VideoPlayer { ...videoJsOptions } />
-          <video id="my-video" class="video-js" controls preload="auto" width="640" height="264" data-setup="{}">
-            <source src="/media/videos/Ldyan_demo_dnd.mp4" type='video/mp4'>
-            </source>
-          </video>
-        </div> */}
         <br/><br/><br/>
       </div>
     )
